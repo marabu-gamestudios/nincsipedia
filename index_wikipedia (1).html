@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nincshof – Wikipedia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #202122;
+            background-color: #f8f9fa;
+        }
+
+        /* Header */
+        .vector-header {
+            background: #fff;
+        }
+
+        .vector-header-inner {
+            max-width: 1650px;
+            margin: 0 auto;
+            padding: 8px 24px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .vector-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+        }
+
+        .menu {
+            font-size: 20px;
+            cursor: pointer;
+            color: #202122;
+            padding: 4px;
+        }
+
+        .menu:hover {
+            background: #eaecf0;
+        }
+
+        .logo-text {
+            font-family: "Linux Libertine", Georgia, Times, serif;
+            font-size: 28px;
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+        }
+
+        .tagline {
+            color: #54595d;
+            font-size: 13px;
+            font-style: italic;
+        }
+
+        /* Search */
+        .vector-search {
+            display: flex;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .vector-search input {
+            flex: 1;
+            padding: 7px 12px;
+            border: 1px solid #a2a9b1;
+            border-right: none;
+            border-radius: 2px 0 0 2px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .vector-search input:focus {
+            border-color: #36c;
+        }
+
+        .vector-search button {
+            padding: 7px 16px;
+            border: 1px solid #a2a9b1;
+            background: #f8f9fa;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 0 2px 2px 0;
+            transition: background 0.1s;
+        }
+
+        .vector-search button:hover {
+            background: #eaecf0;
+        }
+
+        /* User links */
+        .vector-user {
+            display: flex;
+            gap: 0;
+            align-items: center;
+        }
+
+        .vector-user a,
+        .vector-user button {
+            padding: 6px 4px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #3073c7;
+            transition: background 0.1s;
+            border-radius: 2px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .vector-user a:hover,
+        .vector-user button:hover {
+            background: #eaecf0;
+        }
+
+        /* Appearance Menu */
+        .appearance-menu {
+            position: relative;
+        }
+
+        .appearance-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            margin-top: 8px;
+            background: #fff;
+            border: 1px solid #a2a9b1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            min-width: 250px;
+            z-index: 1000;
+            border-radius: 2px;
+        }
+
+        .appearance-dropdown.active {
+            display: block;
+        }
+
+        .appearance-dropdown h3 {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px 16px;
+            margin: 0;
+            border-bottom: 1px solid #eaecf0;
+        }
+
+        .appearance-options {
+            padding: 12px;
+        }
+
+        .appearance-option {
+            margin-bottom: 12px;
+        }
+
+        .appearance-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .appearance-option label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #202122;
+        }
+
+        .appearance-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .appearance-btn {
+            flex: 1;
+            padding: 6px 12px;
+            border: 1px solid #a2a9b1;
+            background: #f8f9fa;
+            cursor: pointer;
+            font-size: 13px;
+            border-radius: 2px;
+            transition: all 0.1s;
+        }
+
+        .appearance-btn:hover {
+            background: #eaecf0;
+        }
+
+        .appearance-btn.active {
+            background: #36c;
+            color: white;
+            border-color: #36c;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1650px;
+            margin: 0 auto;
+            background-color: #fff;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-wrapper {
+            display: flex;
+            position: relative;
+        }
+
+        /* Table of Contents Sidebar */
+        .vector-toc-sidebar {
+            font-family: sans-serif !important; 
+            position: sticky;
+            top: 0;
+            width: 220px;
+            flex-shrink: 0;
+            padding: 20px 12px 20px 24px;
+            align-self: flex-start;
+            max-height: 100vh;
+            overflow-y: auto;
+            border-right: 1px solid #eaecf0;
+        }
+
+        .vector-toc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+        }
+
+        .vector-toc-header h2 {
+            font-size: 13px;
+            font-weight: 600;
+            margin: 0;
+            color: #202122;
+            border: none;
+        }
+
+        .vector-toc-hide {
+            font-size: 12px;
+            background: transparent;
+            border: none;
+            color: #3073c7;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .vector-toc-hide:hover {
+            text-decoration: underline;
+        }
+
+        .vector-toc-tree {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .vector-toc-tree>li {
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        .vector-toc-tree a {
+            color: #3073c7;
+            text-decoration: none;
+            font-size: 13px;
+            display: block;
+            padding: 4px 0;
+        }
+
+        .vector-toc-tree a:hover {
+            text-decoration: underline;
+        }
+
+        /* TOC Sections */
+        .toc-section {
+            margin: 0;
+        }
+
+        .toc-section summary {
+            cursor: pointer;
+            color: #3073c7;
+            list-style: none;
+            font-size: 13px;
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .toc-section summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .toc-section summary::before {
+            content: "▾";
+            display: inline-block;
+            width: 16px;
+            color: #54595d;
+            font-size: 12px;
+        }
+
+        .toc-section details:not([open]) summary::before {
+            content: "▸";
+        }
+
+        .toc-section summary:hover {
+            text-decoration: underline;
+        }
+
+        .toc-section ul {
+            list-style: none;
+            padding-left: 16px;
+            margin: 0;
+        }
+
+        .toc-section li {
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        .toc-section ul a {
+            font-size: 13px;
+            color: #0645ad;
+        }
+
+        /* Erscheinunbgsbild - rechte Spalte */
+
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            max-width: 960px;
+            padding: 20px 32px 32px 32px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-family: "Linux Libertine", Georgia, Times, serif;
+            font-weight: normal;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 8px;
+            margin-bottom: 1px;
+            line-height: 1.3;
+        }
+
+        .article-actions {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 20px;
+            padding: 12px 0 0 0;
+            border-bottom: 1px solid #a2a9b1;
+        }
+
+        .article-actions-left {
+            display: flex;
+            gap: 0;
+        }
+
+        .article-actions-right {
+            display: flex;
+            gap: 0;
+            margin-left: auto;
+        }
+
+        .article-actions a {
+            color: #3073c7;
+            background: transparent;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.1s;
+            position: relative;
+        }
+
+        .article-actions a:hover {
+            background: #eaecf0;
+        }
+
+        .article-actions a.active {
+            background: #fff;
+            color: #000000;
+            font-weight: 400;
+        }
+
+        .article-actions a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #000000;
+        }
+
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            font-size: 21px;
+            font-family: "Linux Libertine", Georgia, Times, serif;
+            font-weight: normal;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 4px;
+            margin-top: 32px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        p {
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #3073c7;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: #285d9e;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Infobox */
+        .infobox {
+            float: right;
+            margin: 0 0 16px 20px;
+            width: 300px;
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+            font-size: 13px;
+        }
+
+        .infobox-title {
+            background-color: #eaecf0;
+            padding: 8px 12px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 19px;
+            font-family: "Linux Libertine", Georgia, Times, serif;
+        }
+
+        .infobox-section {
+            background-color: #eaecf0;
+            padding: 6px 12px;
+            font-weight: 600;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .infobox-image {
+            text-align: center;
+            padding: 12px;
+            background-color: #fff;
+        }
+
+        .infobox-image img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #eaecf0;
+        }
+
+        .infobox table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .infobox th {
+            background-color: #f8f9fa;
+            padding: 6px 12px;
+            text-align: left;
+            font-weight: 600;
+            border-top: 1px solid #eaecf0;
+            vertical-align: top;
+            width: 42%;
+            font-size: 13px;
+        }
+
+        .infobox td {
+            padding: 6px 12px;
+            border-top: 1px solid #eaecf0;
+            background: #fff;
+            font-size: 13px;
+        }
+
+        /* Lists */
+        ul {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        ul li {
+            margin-bottom: 4px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #eaecf0;
+            border-top: 1px solid #a2a9b1;
+            padding: 20px;
+            margin-top: 32px;
+            font-size: 12px;
+            color: #54595d;
+        }
+
+        .footer-inner {
+            max-width: 1650px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer a {
+            color: #0645ad;
+            margin: 0 12px 0 0;
+        }
+
+        /* Reference Links */
+        .reference {
+            color: #3073c7;
+            text-decoration: none;
+            font-size: 11px;
+            vertical-align: super;
+        }
+
+        /* Categories */
+        .categories {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid #a2a9b1;
+            font-size: 13px;
+        }
+
+        .categories-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .categories a {
+            margin-right: 12px;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        /* Discussion Tab Styles */
+        .discussion-notice {
+            background-color: #fef6e7;
+            border: 1px solid #fc3;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            border-radius: 2px;
+        }
+
+        .discussion-textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 12px;
+            border: 1px solid #a2a9b1;
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: vertical;
+            margin-bottom: 12px;
+            border-radius: 2px;
+        }
+
+        .discussion-textarea:focus {
+            outline: none;
+            border-color: #36c;
+        }
+
+        .discussion-preview {
+            border: 1px solid #a2a9b1;
+            padding: 16px;
+            background: #f8f9fa;
+            margin-bottom: 12px;
+            min-height: 100px;
+            border-radius: 2px;
+        }
+
+        .discussion-button {
+            padding: 8px 16px;
+            background: #36c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 8px;
+            font-size: 14px;
+            border-radius: 2px;
+            transition: background 0.2s;
+        }
+
+        .discussion-button:hover {
+            background: #2a4b8d;
+        }
+
+        /* Scrollbar styling */
+        .vector-toc-sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .vector-toc-sidebar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .vector-toc-sidebar::-webkit-scrollbar-thumb {
+            background: #c8ccd1;
+            border-radius: 4px;
+        }
+
+        .vector-toc-sidebar::-webkit-scrollbar-thumb:hover {
+            background: #a2a9b1;
+        }
+
+        /* =========================================================
+        Rechte Sidebar
+        ========================================================= */
+            .right-sidebar {
+                width: 260px;
+                flex-shrink: 0;
+                padding: 20px 24px 20px 12px;
+                border-left: 1px solid #eaecf0;
+                background: #fff;
+            }
+
+            .right-box {
+                margin-bottom: 20px;
+                padding: 12px;
+                background: #f8f9fa;
+                border: 1px solid #eaecf0;
+                border-radius: 2px;
+                font-size: 13px;
+            }
+
+            .right-box h3 {
+                margin: 0 0 8px 0;
+                font-size: 14px;
+                font-weight: 600;
+            }
+
+        </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="vector-header">
+        <div class="vector-header-inner">
+            <div class="vector-left">
+                <span class="menu">☰</span>
+                <a class="logo-text" href="https://de.wikipedia.org/">Wikipedia</a>
+                <span class="tagline">Die freie Enzyklopädie</span>
+
+                <div class="vector-search">
+                    <input type="search" placeholder="Wikipedia durchsuchen">
+                    <button><b>Suchen</b></button>
+                </div>
+            </div>
+
+            <div class="vector-user">
+                <a href="#">Jetzt spenden</a>
+                <a href="#">Benutzerkonto erstellen</a>
+                <a href="#">Anmelden</a>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="content-wrapper">
+            <!-- Table of Contents Sidebar -->
+            <nav class="vector-toc-sidebar" aria-labelledby="toc-title">
+                <div class="vector-toc-header">
+                    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+                    <button class="vector-toc-hide" onclick="toggleTOC()">verbergen</button>
+                </div>
+
+                <ul class="vector-toc-tree" id="toc-list">
+                    <li><a href="#top">(Anfang)</a></li>
+
+                    <li><a href="#etymologie">Etymologie</a></li>
+
+                    <li class="toc-section">
+                        <details open>
+                            <summary>Geografie</summary>
+                            <ul>
+                                <li><a href="#nachbargemeinden">Nachbargemeinden</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="toc-section">
+                        <details open>
+                            <summary>Geschichte</summary>
+                            <ul>
+                                <li><a href="#religion">Religion</a></li>
+                                <li><a href="#bevoelkerung">Bevölkerungsentwicklung</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="toc-section">
+                        <details open>
+                            <summary>Kultur und Sehenswürdigkeiten</summary>
+                            <ul>
+                                <li><a href="#musik">Musik</a></li>
+                                <li><a href="#veranstaltungen">Regelmäßige Veranstaltungen</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="toc-section">
+                        <details open>
+                            <summary>Politik</summary>
+                            <ul>
+                                <li><a href="#gemeinderat">Gemeinderat</a></li>
+                                <li><a href="#buergermeister">Bürgermeister</a></li>
+				<li><a href="#Partei">Partei</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <h1>Nincshof</h1>
+
+                <div class="article-actions">
+                    <div class="article-actions-left">
+                        <a href="#" class="tab-link active" onclick="switchTab(event, 'artikel')">Artikel</a>
+                        <a href="#" class="tab-link" onclick="switchTab(event, 'diskussion')">Diskussion</a>
+                    </div>
+                    <div class="article-actions-right">
+                        <a href="#" class="tab-link active">Lesen</a>
+                        <a href="#" class="tab-link">Bearbeiten</a>
+                        <a href="#" class="tab-link">Quelltext bearbeiten</a>
+                        <a href="#" class="tab-link">Versionsgeschichte</a>
+                        <a href="#" class="tab-link">Werkzeuge</a>
+                    </div>
+                </div>
+
+                <!-- Artikel Tab -->
+                <div id="artikel" class="tab-content active">
+                    <!-- Infobox -->
+                    <div class="infobox">
+                        <div class="infobox-title">Nincshof</div>
+                        <div class="infobox-image">
+                            <img src="wappen_nincshof.png"
+                                alt="Nincshofwappen; altes Gebäude auf grünenen Wiesen und vor See/Pool">
+                        </div>
+                        <div class="infobox-section">Basisdaten</div>
+                        <table>
+                            <tr>
+                                <th>Staat:</th>
+                                <td><a href="https://de.wikipedia.org/wiki/%C3%96sterreich">Österreich</a></td>
+                            </tr>
+                            <tr>
+                                <th>Land:</th>
+                                <td><a href="https://de.wikipedia.org/wiki/Burgenland">Burgenland</a></td>
+                            </tr>
+                            <tr>
+                                <th>Bezirk:</th>
+                                <td><a href="https://de.wikipedia.org/wiki/Bezirk_Neusiedl_am_See">Neusiedl am See</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Kfz-Kennzeichen:</th>
+                                <td>ND</td>
+                            </tr>
+                            <tr>
+                                <th>Fläche:</th>
+                                <td>40.67 km²</td>
+                            </tr>
+                            <tr>
+                                <th>Koordinaten:</th>
+                                <td>47°42'47.3"N,16°59'33.7"E</td>
+                            </tr>
+                            <tr>
+                                <th>Höhe:</th>
+                                <td>121 m ü. A.</td>
+                            </tr>
+                            <tr>
+                                <th>Einwohner:</th>
+                                <td>2088 (Stand 2026)</td>
+                            </tr>
+                            <tr>
+                                <th>Bevölkerungs­dichte:</th>
+                                <td>17 Einw. pro km²</td>
+                            </tr>
+                            <tr>
+                                <th>Postleitzahl:</th>
+                                <td>7164</td>
+                            </tr>
+                            <tr>
+                                <th>Vorwahl:</th>
+                                <td>02178</td>
+                            </tr>
+                            <tr>
+                                <th>Gemeinde­kennziffer:</th>
+                                <td>1 07 02</td>
+                            </tr>
+                            <tr>
+                                <th>Adresse der Gemeinde­verwaltung:</th>
+                                <td>Hauptstraße 1 7164 Nincshof</td>
+                            </tr>
+                        </table>
+                        <div class="infobox-section">Politik</div>
+                        <table>
+                            <tr>
+                                <th>Bürgermeister:</th>
+                                <td>Anonym</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <p><strong>Nincshof</strong> ist eine Gemeinde im österreichischen Bundesland <a
+                            href="#">Burgenland</a> im <a href="#">Bezirk Neusiedl am See</a>. Die Gemeinde liegt im
+                        nördlichen Burgenland und ist Teil der Region um den <a href="#">Neusiedler See</a>.</p>
+
+                    <h2 id="etymologie">Etymologie</h2>
+                    <p>Der Name Nincshof hat seinen Ursprung in der historischen Besiedlung der Region. Die Endung
+                        "-hof" deutet auf einen landwirtschaftlichen Ursprung hin, während "Nincs" das ungarische Wort für "es gibt nicht" 			oder "nicht vorhanden" ist.</p>
+
+                    <h2 id="geografie">Geografie</h2>
+                    <p>Nincshof liegt im nördlichen Burgenland in der Nähe des Neusiedler Sees. Die Gemeinde erstreckt
+                        sich über eine Fläche von 40.67 km² und befindet sich auf einer Höhe von etwa 121 Metern über Adria. In der Nähe
+			der kleinen Gemeinde befindet sich der <a href="#">Einser-Kanal</a>, der parllel zur Grenze zwischen Ungarn und 			Österreich.
+                    </p>
+
+                    <h3 id="nachbargemeinden">Nachbargemeinden</h3>
+                    <p>Die Gemeinde grenzt an mehrere andere Ortschaften im Bezirk Neusiedl am See. Die genaue
+                        geographische Lage macht Nincshof zu einem Teil der charakteristischen Landschaft des nördlichen
+                        Burgenlandes.</p>
+
+                    <h2 id="geschichte">Geschichte</h2>
+                    <p>Die Geschichte von Nincshof ist eng mit der Entwicklung des nördlichen Burgenlandes verbunden.
+                        Wie viele Gemeinden in dieser Region wurde auch Nincshof durch die wechselvolle Geschichte der
+                        österreichisch-ungarischen Grenzregion geprägt.</p>
+
+                    <h3 id="religion">Religion</h3>
+                    <p>Die religiöse Struktur der Gemeinde spiegelt die typische konfessionelle Zusammensetzung des
+                        Burgenlandes wider, mit einer Mehrheit katholischer Einwohner. Charakteristisch für die Gemeinde ist alledings 				das sogenannte "Jesusschwein" - ein Schwein, das im Rahmen des traditionellen Krippenspiels auftritt.</p>
+
+                    <h3 id="bevoelkerung">Bevölkerungsentwicklung</h3>
+                    <p>Die Einwohnerzahl von Nincshof hat sich im Laufe der Jahre entwickelt und unterliegt den
+                        typischen Trends ländlicher Gemeinden in Österreich.</p>
+
+                    <h2 id="kultur">Kultur und Sehenswürdigkeiten</h2>
+                    <p>Nincshof bietet verschiedene kulturelle Angebote und Sehenswürdigkeiten, die die lokale Tradition
+                        und Geschichte widerspiegeln. Die Gemeinde zeichnet sich darüber hinaus durch Legenden aus. Beispielsweise gibt es 			die Legende von Nincshof, das einst völlig unbemerkt auf Stelzen im Sumpf gelegen haben soll.</p>
+
+                    <h3 id="musik">Musik</h3>
+                    <p>Die musikalische Tradition spielt eine wichtige Rolle im kulturellen Leben der Gemeinde.</p>
+
+                    <h3 id="veranstaltungen">Regelmäßige Veranstaltungen</h3>
+                    <p>Im Jahresverlauf finden verschiedene Veranstaltungen statt, die das Gemeindeleben bereichern und
+                        Besucher anziehen. Charakteristisch für Nincshof sind Radfahrer, die bei ihrer Rundfahrt um den Neusiedler See 				häufig einen Halt in der idyllischen Gemeinde machen.</p>
+
+                    <h2 id="politik">Politik</h2>
+                    <p>Die politische Struktur von Nincshof folgt dem österreichischen Gemeindewesen mit einem gewählten
+                        Gemeinderat und Bürgermeister.</p>
+
+                    <h3 id="gemeinderat">Gemeinderat</h3>
+                    <p>Der Gemeinderat besteht aus gewählten Vertretern der örtlichen Bevölkerung und ist für die
+                        kommunalen Belange zuständig.</p>
+
+                    <h3 id="buergermeister">Bürgermeister</h3>
+                    <p>Der Bürgermeister wird vom Gemeinderat gewählt und vertritt die Gemeinde nach außen.</p>
+
+		    <h3 id="Partei">Partei</h3>
+	            <p>Nincshof folgt nicht der traditionellen Parteienwelt Österreichs. In Nincshof regieren die Oblivisten 				       (Oblivistische Partei Nincshof).
+
+                    <h2 id="siehe-auch">Siehe auch</h2>
+                    <ul>
+                        <li><a href="#">Burgenland</a></li>
+                        <li><a href="#">Bezirk Neusiedl am See</a></li>
+                        <li><a href="#">Neusiedler See</a></li>
+                        <li><a href="#">Liste der Gemeinden im Burgenland</a></li>
+                    </ul>
+
+                    <h2 id="weblinks">Weblinks</h2>
+                    <ul>
+                        <li><a href="#">Offizielle Website der Gemeinde</a></li>
+                        <li><a href="#">Statistik Austria – Daten zur Gemeinde</a></li>
+                    </ul>
+
+                    <!-- Categories -->
+                    <div class="categories">
+                        <div class="categories-title">Kategorien:</div>
+                        <a href="#">Gemeinde im Burgenland</a>
+                        <a href="#">Ort im Bezirk Neusiedl am See</a>
+                    </div>
+                </div>
+
+                <!-- Diskussion Tab -->
+                <div id="diskussion" class="tab-content">
+                    <div class="discussion-notice">
+                        Dies ist die Diskussionsseite für den Artikel "Nincshof". Hier können Verbesserungsvorschläge,
+                        Fragen und Anmerkungen zum Artikel diskutiert werden.
+                    </div>
+
+                    <h2>Neuer Diskussionsbeitrag</h2>
+                    <textarea class="discussion-textarea" id="discussionInput"
+                        placeholder="Schreiben Sie hier Ihren Diskussionsbeitrag..."></textarea>
+
+                    <button class="discussion-button" onclick="showPreview()">Vorschau anzeigen</button>
+
+                    <h2 style="margin-top: 32px;">Vorschau</h2>
+                    <div class="discussion-preview" id="discussionPreview">
+                        <em style="color: #54595d;">Die Vorschau Ihres Textes wird hier angezeigt...</em>
+                    </div>
+                </div>
+            </div>
+        
+        <aside class="right-sidebar">
+            <div class="appearance-menu">
+                <button onclick="toggleAppearance()">⚙ Erscheinungsbild</button>
+                <div class="appearance-dropdown" id="appearanceDropdown">
+                    <h3>Erscheinungsbild</h3>
+                    <div class="appearance-options">
+                        <div class="appearance-option">
+                            <label>Breite</label>
+                            <div class="appearance-buttons">
+                                <button class="appearance-btn active" onclick="setWidth('standard')">Standard</button>
+                                <button class="appearance-btn" onclick="setWidth('breit')">Breit</button>
+                            </div>
+                        </div>
+                        <div class="appearance-option">
+                            <label>Schriftgröße</label>
+                            <div class="appearance-buttons">
+                                <button class="appearance-btn" onclick="setFontSize('klein')">Klein</button>
+                                <button class="appearance-btn active" onclick="setFontSize('standard')">Standard</button>
+                                <button class="appearance-btn" onclick="setFontSize('groß')">Groß</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-inner">
+            Der Text ist unter der Lizenz „Creative Commons Attribution/Share Alike" verfügbar.
+            <br>
+            <a href="#">Datenschutz</a>
+            <a href="#">Über Wikipedia</a>
+            <a href="#">Impressum</a>
+            <a href="#">Mobile Ansicht</a>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(event, tabName) {
+            event.preventDefault();
+
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            const tabLinks = document.querySelectorAll('.tab-link');
+            tabLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function showPreview() {
+            const input = document.getElementById('discussionInput');
+            const preview = document.getElementById('discussionPreview');
+            const text = input.value;
+
+            if (text.trim() === '') {
+                preview.innerHTML = '<em style="color: #54595d;">Die Vorschau Ihres Textes wird hier angezeigt...</em>';
+            } else {
+                const formattedText = text
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/\n/g, '<br>');
+                preview.innerHTML = formattedText;
+            }
+        }
+
+        function toggleTOC() {
+            const tocList = document.getElementById('toc-list');
+            const button = document.querySelector('.vector-toc-hide');
+
+            if (tocList.style.display === 'none') {
+                tocList.style.display = 'block';
+                button.textContent = 'verbergen';
+            } else {
+                tocList.style.display = 'none';
+                button.textContent = 'anzeigen';
+            }
+        }
+
+        function toggleAppearance() {
+            const dropdown = document.getElementById('appearanceDropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        function setWidth(width) {
+            const buttons = document.querySelectorAll('.appearance-option:first-child .appearance-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const container = document.querySelector('.container');
+            if (width === 'breit') {
+                container.style.maxWidth = '100%';
+            } else {
+                container.style.maxWidth = '1650px';
+            }
+        }
+
+        function setFontSize(size) {
+            const buttons = document.querySelectorAll('.appearance-option:last-child .appearance-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const body = document.body;
+            if (size === 'klein') {
+                body.style.fontSize = '13px';
+            } else if (size === 'groß') {
+                body.style.fontSize = '16px';
+            } else {
+                body.style.fontSize = '14px';
+            }
+        }
+
+        // Close appearance dropdown when clicking outside
+        document.addEventListener('click', function (event) {
+            const appearanceMenu = document.querySelector('.appearance-menu');
+            const dropdown = document.getElementById('appearanceDropdown');
+
+            if (!appearanceMenu.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>
