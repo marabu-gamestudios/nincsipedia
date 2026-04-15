@@ -735,6 +735,159 @@
             }
 
             /* =========================================================
+               Mobile Menu Overlay
+            ========================================================= */
+            .mobile-nav-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.4);
+                z-index: 2000;
+            }
+            .mobile-nav-overlay.active {
+                display: block;
+            }
+            .mobile-nav-panel {
+                position: fixed;
+                top: 0; left: 0; bottom: 0;
+                width: 280px;
+                background: #fff;
+                z-index: 2001;
+                overflow-y: auto;
+                padding: 16px;
+                box-shadow: 2px 0 12px rgba(0,0,0,0.2);
+                transform: translateX(-100%);
+                transition: transform 0.25s ease;
+            }
+            .mobile-nav-overlay.active .mobile-nav-panel {
+                transform: translateX(0);
+            }
+            .mobile-nav-close {
+                background: none;
+                border: none;
+                font-size: 22px;
+                cursor: pointer;
+                float: right;
+                color: #202122;
+                padding: 4px 8px;
+            }
+            .mobile-nav-panel h2 {
+                font-size: 16px;
+                border-bottom: 1px solid #eaecf0;
+                padding-bottom: 8px;
+                margin-bottom: 12px;
+                clear: both;
+            }
+
+            /* =========================================================
+               TABLET (max-width: 1024px)
+            ========================================================= */
+            @media (max-width: 1024px) {
+                .vector-header-inner {
+                    padding: 8px 16px;
+                    gap: 12px;
+                }
+                .tagline { display: none; }
+                .vector-search { max-width: 280px; }
+                .vector-user a { padding: 6px 6px; font-size: 13px; }
+
+                .vector-toc-sidebar {
+                    width: 180px;
+                    padding: 16px 8px 16px 16px;
+                }
+                .main-content {
+                    padding: 16px 20px 28px 20px;
+                }
+                .right-sidebar {
+                    width: 220px;
+                    padding: 16px 16px 16px 8px;
+                }
+                .infobox { width: 240px; }
+            }
+
+            /* =========================================================
+               MOBILE (max-width: 768px)
+            ========================================================= */
+            @media (max-width: 768px) {
+                /* Header */
+                .vector-header-inner {
+                    flex-wrap: wrap;
+                    padding: 8px 12px;
+                    gap: 8px;
+                }
+                .vector-left {
+                    flex: 1 1 100%;
+                    gap: 10px;
+                }
+                .logo-text { font-size: 22px; }
+                .tagline { display: none; }
+                .vector-search {
+                    flex: 1;
+                    max-width: 100%;
+                }
+                .vector-user {
+                    flex: 1 1 100%;
+                    flex-wrap: wrap;
+                    gap: 4px;
+                }
+                .vector-user a { font-size: 13px; padding: 5px 8px; }
+
+                /* Hide sidebars, show hamburger nav */
+                .vector-toc-sidebar { display: none; }
+                .right-sidebar { display: none; }
+
+                .menu {
+                    font-size: 24px;
+                    padding: 4px 8px;
+                }
+                .menu-mobile-btn { display: inline-block; }
+
+                /* Layout: single column */
+                .content-wrapper { flex-direction: column; }
+                .main-content {
+                    max-width: 100%;
+                    padding: 12px 14px 24px 14px;
+                }
+
+                /* Infobox: full width, no float */
+                .infobox {
+                    float: none;
+                    width: 100%;
+                    margin: 0 0 20px 0;
+                }
+
+                /* Article actions: scrollable */
+                .article-actions {
+                    flex-wrap: wrap;
+                    gap: 0;
+                    overflow-x: auto;
+                }
+                .article-actions-left, .article-actions-right {
+                    flex-wrap: nowrap;
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+                }
+                .article-actions-right { margin-left: 0; }
+                .article-actions a { font-size: 13px; padding: 8px 10px; white-space: nowrap; }
+
+                h1 { font-size: 24px; }
+                h2 { font-size: 18px; }
+
+                /* Footer */
+                .footer-inner { padding: 0 12px; }
+                .footer a { display: inline-block; margin-bottom: 6px; }
+            }
+
+            /* =========================================================
+               SMALL MOBILE (max-width: 480px)
+            ========================================================= */
+            @media (max-width: 480px) {
+                .logo-text { font-size: 19px; }
+                .vector-user a:not(:first-child) { display: none; }
+                .vector-user a:first-child { display: inline-block; }
+            }
+
+            /* =========================================================
     Rechte Sidebar
     ========================================================= */
             .right-sidebar {
@@ -763,11 +916,57 @@
 </head>
 
 <body>
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="closeMobileNav(event)">
+    <div class="mobile-nav-panel">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+        <h2>Inhaltsverzeichnis</h2>
+        <ul class="vector-toc-tree">
+            <li><a href="#top" onclick="toggleMobileNav()">(Anfang)</a></li>
+            <li><a href="#etymologie" onclick="toggleMobileNav()">Etymologie</a></li>
+            <li class="toc-section">
+                <details open>
+                    <summary>Geografie</summary>
+                    <ul><li><a href="#nachbargemeinden" onclick="toggleMobileNav()">Nachbargemeinden</a></li></ul>
+                </details>
+            </li>
+            <li class="toc-section">
+                <details open>
+                    <summary>Geschichte</summary>
+                    <ul>
+                        <li><a href="#religion" onclick="toggleMobileNav()">Religion</a></li>
+                        <li><a href="#bevoelkerung" onclick="toggleMobileNav()">Bevölkerungsentwicklung</a></li>
+                    </ul>
+                </details>
+            </li>
+            <li class="toc-section">
+                <details open>
+                    <summary>Kultur und Sehenswürdigkeiten</summary>
+                    <ul>
+                        <li><a href="#musik" onclick="toggleMobileNav()">Musik</a></li>
+                        <li><a href="#veranstaltungen" onclick="toggleMobileNav()">Regelmäßige Veranstaltungen</a></li>
+                    </ul>
+                </details>
+            </li>
+            <li class="toc-section">
+                <details open>
+                    <summary>Politik</summary>
+                    <ul>
+                        <li><a href="#gemeinderat" onclick="toggleMobileNav()">Gemeinderat</a></li>
+                        <li><a href="#buergermeister" onclick="toggleMobileNav()">Bürgermeister</a></li>
+                        <li><a href="#Partei" onclick="toggleMobileNav()">Partei</a></li>
+                    </ul>
+                </details>
+            </li>
+        </ul>
+    </div>
+</div>
+
 <!-- Header -->
 <header class="vector-header">
     <div class="vector-header-inner">
         <div class="vector-left">
-            <span class="menu">☰</span>
+            <span class="menu" onclick="toggleMobileNav()" aria-label="Menü öffnen" role="button" tabindex="0">☰</span>
             <a class="logo-text" href="https://de.wikipedia.org/">Nincspedia</a>
             <span class="tagline">Die weniger freie Enzyklopädie</span>
 
@@ -1072,6 +1271,18 @@
 </div>
 
 <script>
+    function toggleMobileNav() {
+        const overlay = document.getElementById('mobileNavOverlay');
+        overlay.classList.toggle('active');
+    }
+
+    function closeMobileNav(event) {
+        // Close only when clicking the overlay backdrop, not the panel
+        if (event.target === document.getElementById('mobileNavOverlay')) {
+            document.getElementById('mobileNavOverlay').classList.remove('active');
+        }
+    }
+
     function switchTab(event, tabName) {
         event.preventDefault();
 
