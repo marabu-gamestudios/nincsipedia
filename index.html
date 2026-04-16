@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 
@@ -99,1278 +98,1720 @@
         }
 
         .vector-search button:hover {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+            background: #eaecf0;
+        }
 
-            body {
-                font-family: sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
-                color: #202122;
-                background-color: #f8f9fa;
-            }
+        /* User links */
+        .vector-user {
+            display: flex;
+            gap: 0;
+            align-items: center;
+        }
 
-            /* Header */
-            .vector-header {
-                background: #fff;
-            }
+        .vector-user a,
+        .vector-user button {
+            padding: 6px 4px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #3073c7;
+            transition: background 0.1s;
+            border-radius: 2px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
 
+        .vector-user a:hover,
+        .vector-user button:hover {
+            background: #eaecf0;
+        }
+
+        /* Appearance Menu */
+        .appearance-menu {
+            position: relative;
+        }
+
+        .appearance-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            margin-top: 8px;
+            background: #fff;
+            border: 1px solid #a2a9b1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            min-width: 250px;
+            z-index: 1000;
+            border-radius: 2px;
+        }
+
+        .appearance-dropdown.active {
+            display: block;
+        }
+
+        .appearance-dropdown h3 {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px 16px;
+            margin: 0;
+            border-bottom: 1px solid #eaecf0;
+        }
+
+        .appearance-options {
+            padding: 12px;
+        }
+
+        .appearance-option {
+            margin-bottom: 12px;
+        }
+
+        .appearance-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .appearance-option label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #202122;
+        }
+
+        .appearance-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .appearance-btn {
+            flex: 1;
+            padding: 6px 12px;
+            border: 1px solid #a2a9b1;
+            background: #f8f9fa;
+            cursor: pointer;
+            font-size: 13px;
+            border-radius: 2px;
+            transition: all 0.1s;
+        }
+
+        .appearance-btn:hover {
+            background: #eaecf0;
+        }
+
+        .appearance-btn.active {
+            background: #36c;
+            color: white;
+            border-color: #36c;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1650px;
+            margin: 0 auto;
+            background-color: #fff;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-wrapper {
+            display: flex;
+            position: relative;
+        }
+
+        /* Table of Contents Sidebar */
+        .vector-toc-sidebar {
+            font-family: sans-serif !important;
+            position: sticky;
+            top: 0;
+            width: 220px;
+            flex-shrink: 0;
+            padding: 20px 12px 20px 24px;
+            align-self: flex-start;
+            max-height: 100vh;
+            overflow-y: auto;
+            border-right: 1px solid #eaecf0;
+        }
+
+        .vector-toc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+        }
+
+        .vector-toc-header h2 {
+            font-size: 13px;
+            font-weight: 600;
+            margin: 0;
+            color: #202122;
+            border: none;
+        }
+
+        .vector-toc-hide {
+            font-size: 12px;
+            background: transparent;
+            border: none;
+            color: #3073c7;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .vector-toc-hide:hover {
+            text-decoration: underline;
+        }
+
+        .vector-toc-tree {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .vector-toc-tree>li {
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        .vector-toc-tree a {
+            color: #3073c7;
+            text-decoration: none;
+            font-size: 13px;
+            display: block;
+            padding: 4px 0;
+        }
+
+        .vector-toc-tree a:hover {
+            text-decoration: underline;
+        }
+
+        /* TOC Sections */
+        .toc-section {
+            margin: 0;
+        }
+
+        .toc-section summary {
+            cursor: pointer;
+            color: #3073c7;
+            list-style: none;
+            font-size: 13px;
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .toc-section summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .toc-section summary::before {
+            content: "▾";
+            display: inline-block;
+            width: 16px;
+            color: #54595d;
+            font-size: 12px;
+        }
+
+        .toc-section details:not([open]) summary::before {
+            content: "▸";
+        }
+
+        .toc-section summary:hover {
+            text-decoration: underline;
+        }
+
+        .toc-section ul {
+            list-style: none;
+            padding-left: 16px;
+            margin: 0;
+        }
+
+        .toc-section li {
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        .toc-section ul a {
+            font-size: 13px;
+            color: #0645ad;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            max-width: 960px;
+            padding: 20px 32px 32px 32px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-family: "Linux Libertine", Georgia, Times, serif;
+            font-weight: normal;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 8px;
+            margin-bottom: 1px;
+            line-height: 1.3;
+        }
+
+        .article-actions {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 20px;
+            padding: 12px 0 0 0;
+            border-bottom: 1px solid #a2a9b1;
+        }
+
+        .article-actions-left {
+            display: flex;
+            gap: 0;
+        }
+
+        .article-actions-right {
+            display: flex;
+            gap: 0;
+            margin-left: auto;
+        }
+
+        .article-actions a {
+            color: #3073c7;
+            background: transparent;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.1s;
+            position: relative;
+        }
+
+        .article-actions a:hover {
+            background: #eaecf0;
+        }
+
+        .article-actions a.active {
+            background: #fff;
+            color: #000000;
+            font-weight: 400;
+        }
+
+        .article-actions a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #000000;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            font-size: 21px;
+            font-family: "Linux Libertine", Georgia, Times, serif;
+            font-weight: normal;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 4px;
+            margin-top: 32px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        p {
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #3073c7;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: #285d9e;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Infobox */
+        .infobox {
+            float: right;
+            margin: 0 0 16px 20px;
+            width: 300px;
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+            font-size: 13px;
+        }
+
+        .infobox-title {
+            background-color: #eaecf0;
+            padding: 8px 12px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 19px;
+            font-family: "Linux Libertine", Georgia, Times, serif;
+        }
+
+        .infobox-section {
+            background-color: #eaecf0;
+            padding: 6px 12px;
+            font-weight: 600;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .infobox-image {
+            text-align: center;
+            padding: 12px;
+            background-color: #fff;
+        }
+
+        .infobox-image img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #eaecf0;
+        }
+
+        .infobox table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .infobox th {
+            background-color: #f8f9fa;
+            padding: 6px 12px;
+            text-align: left;
+            font-weight: 600;
+            border-top: 1px solid #eaecf0;
+            vertical-align: top;
+            width: 42%;
+            font-size: 13px;
+        }
+
+        .infobox td {
+            padding: 6px 12px;
+            border-top: 1px solid #eaecf0;
+            background: #fff;
+            font-size: 13px;
+        }
+
+        /* Lists */
+        ul {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        ul li {
+            margin-bottom: 4px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #eaecf0;
+            border-top: 1px solid #a2a9b1;
+            padding: 20px;
+            margin-top: 32px;
+            font-size: 12px;
+            color: #54595d;
+        }
+
+        .footer-inner {
+            max-width: 1650px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer a {
+            color: #0645ad;
+            margin: 0 12px 0 0;
+        }
+
+        /* Reference Links */
+        .reference {
+            color: #3073c7;
+            text-decoration: none;
+            font-size: 11px;
+            vertical-align: super;
+        }
+
+        /* Categories */
+        .categories {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid #a2a9b1;
+            font-size: 13px;
+        }
+
+        .categories-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .categories a {
+            margin-right: 12px;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        /* Discussion Tab Styles */
+        .discussion-notice {
+            background-color: #fef6e7;
+            border: 1px solid #fc3;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            border-radius: 2px;
+        }
+
+        .discussion-textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 12px;
+            border: 1px solid #a2a9b1;
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: vertical;
+            margin-bottom: 12px;
+            border-radius: 2px;
+        }
+
+        .discussion-textarea:focus {
+            outline: none;
+            border-color: #36c;
+        }
+
+        .discussion-preview {
+            border: 1px solid #a2a9b1;
+            padding: 16px;
+            background: #f8f9fa;
+            margin-bottom: 12px;
+            min-height: 100px;
+            border-radius: 2px;
+        }
+
+        .discussion-button {
+            padding: 8px 16px;
+            background: #36c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 8px;
+            font-size: 14px;
+            border-radius: 2px;
+            transition: background 0.2s;
+        }
+
+        .discussion-button:hover {
+            background: #2a4b8d;
+        }
+
+        /* Scrollbar styling */
+        .vector-toc-sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .vector-toc-sidebar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .vector-toc-sidebar::-webkit-scrollbar-thumb {
+            background: #c8ccd1;
+            border-radius: 4px;
+        }
+
+        .vector-toc-sidebar::-webkit-scrollbar-thumb:hover {
+            background: #a2a9b1;
+        }
+
+        /* Mobile Nav Overlay */
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 2000;
+        }
+
+        .mobile-nav-overlay.active {
+            display: block;
+        }
+
+        .mobile-nav-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 280px;
+            background: #fff;
+            z-index: 2001;
+            overflow-y: auto;
+            padding: 16px;
+            box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
+            transform: translateX(-100%);
+            transition: transform 0.25s ease;
+        }
+
+        .mobile-nav-overlay.active .mobile-nav-panel {
+            transform: translateX(0);
+        }
+
+        .mobile-nav-close {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            float: right;
+            color: #202122;
+            padding: 4px 8px;
+        }
+
+        .mobile-nav-panel h2 {
+            font-size: 16px;
+            border-bottom: 1px solid #eaecf0;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+            clear: both;
+        }
+
+        /* Rechte Sidebar */
+        .right-sidebar {
+            width: 260px;
+            flex-shrink: 0;
+            padding: 20px 24px 20px 12px;
+            border-left: 1px solid #eaecf0;
+            background: #fff;
+        }
+
+        .right-box {
+            margin-bottom: 20px;
+            padding: 12px;
+            background: #f8f9fa;
+            border: 1px solid #eaecf0;
+            border-radius: 2px;
+            font-size: 13px;
+        }
+
+        .right-box h3 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
             .vector-header-inner {
-                max-width: 1650px;
-                margin: 0 auto;
-                padding: 8px 24px;
-                display: flex;
-                align-items: center;
-                gap: 24px;
-            }
-
-            .vector-left {
-                display: flex;
-                align-items: center;
-                gap: 16px;
-                flex: 1;
-            }
-
-            .menu {
-                font-size: 20px;
-                cursor: pointer;
-                color: #202122;
-                padding: 4px;
-            }
-
-            .menu:hover {
-                background: #eaecf0;
-            }
-
-            .logo-text {
-                font-family: "Linux Libertine", Georgia, Times, serif;
-                font-size: 28px;
-                text-decoration: none;
-                color: #000;
-                font-weight: 500;
+                padding: 8px 16px;
+                gap: 12px;
             }
 
             .tagline {
-                color: #54595d;
-                font-size: 13px;
-                font-style: italic;
-            }
-
-            /* Search */
-            .vector-search {
-                display: flex;
-                flex: 1;
-                max-width: 400px;
-            }
-
-            .vector-search input {
-                flex: 1;
-                padding: 7px 12px;
-                border: 1px solid #a2a9b1;
-                border-right: none;
-                border-radius: 2px 0 0 2px;
-                font-size: 14px;
-                outline: none;
-            }
-
-            .vector-search input:focus {
-                border-color: #36c;
-            }
-
-            .vector-search button {
-                padding: 7px 16px;
-                border: 1px solid #a2a9b1;
-                background: #f8f9fa;
-                cursor: pointer;
-                font-size: 14px;
-                border-radius: 0 2px 2px 0;
-                transition: background 0.1s;
-            }
-
-            .vector-search button:hover {
-                background: #eaecf0;
-            }
-
-            /* User links */
-            .vector-user {
-                display: flex;
-                gap: 0;
-                align-items: center;
-            }
-
-            .vector-user a,
-            .vector-user button {
-                padding: 6px 4px;
-                font-size: 14px;
-                text-decoration: none;
-                color: #3073c7;
-                transition: background 0.1s;
-                border-radius: 2px;
-                background: transparent;
-                border: none;
-                cursor: pointer;
-                font-family: inherit;
-            }
-
-            .vector-user a:hover,
-            .vector-user button:hover {
-                background: #eaecf0;
-            }
-
-            /* Appearance Menu */
-            .appearance-menu {
-                position: relative;
-            }
-
-            .appearance-dropdown {
                 display: none;
-                position: absolute;
-                right: 0;
-                top: 100%;
-                margin-top: 8px;
-                background: #fff;
-                border: 1px solid #a2a9b1;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-                min-width: 250px;
-                z-index: 1000;
-                border-radius: 2px;
             }
 
-            .appearance-dropdown.active {
-                display: block;
+            .vector-search {
+                max-width: 280px;
             }
 
-            .appearance-dropdown h3 {
-                font-size: 14px;
-                font-weight: 600;
-                padding: 12px 16px;
-                margin: 0;
-                border-bottom: 1px solid #eaecf0;
-            }
-
-            .appearance-options {
-                padding: 12px;
-            }
-
-            .appearance-option {
-                margin-bottom: 12px;
-            }
-
-            .appearance-option:last-child {
-                margin-bottom: 0;
-            }
-
-            .appearance-option label {
-                display: block;
+            .vector-user a {
+                padding: 6px 6px;
                 font-size: 13px;
-                font-weight: 600;
-                margin-bottom: 6px;
-                color: #202122;
             }
 
-            .appearance-buttons {
-                display: flex;
+            .vector-toc-sidebar {
+                width: 180px;
+                padding: 16px 8px 16px 16px;
+            }
+
+            .main-content {
+                padding: 16px 20px 28px 20px;
+            }
+
+            .right-sidebar {
+                width: 220px;
+                padding: 16px 16px 16px 8px;
+            }
+
+            .infobox {
+                width: 240px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .vector-header-inner {
+                flex-wrap: wrap;
+                padding: 8px 12px;
                 gap: 8px;
             }
 
-            .appearance-btn {
+            .vector-left {
+                flex: 1 1 100%;
+                gap: 10px;
+            }
+
+            .logo-text {
+                font-size: 22px;
+            }
+
+            .tagline {
+                display: none;
+            }
+
+            .vector-search {
                 flex: 1;
-                padding: 6px 12px;
-                border: 1px solid #a2a9b1;
-                background: #f8f9fa;
-                cursor: pointer;
+                max-width: 100%;
+            }
+
+            .vector-user {
+                flex: 1 1 100%;
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+
+            .vector-user a {
                 font-size: 13px;
-                border-radius: 2px;
-                transition: all 0.1s;
+                padding: 5px 8px;
             }
 
-            .appearance-btn:hover {
-                background: #eaecf0;
+            .vector-toc-sidebar {
+                display: none;
             }
 
-            .appearance-btn.active {
-                background: #36c;
-                color: white;
-                border-color: #36c;
+            .right-sidebar {
+                display: none;
             }
 
-            /* Main Container */
-            .container {
-                max-width: 1650px;
-                margin: 0 auto;
-                background-color: #fff;
-                min-height: calc(100vh - 200px);
+            .menu {
+                font-size: 24px;
+                padding: 4px 8px;
             }
 
             .content-wrapper {
-                display: flex;
-                position: relative;
+                flex-direction: column;
             }
 
-            /* Table of Contents Sidebar */
-            .vector-toc-sidebar {
-                font-family: sans-serif !important;
-                position: sticky;
-                top: 0;
-                width: 220px;
-                flex-shrink: 0;
-                padding: 20px 12px 20px 24px;
-                align-self: flex-start;
-                max-height: 100vh;
-                overflow-y: auto;
-                border-right: 1px solid #eaecf0;
-            }
-
-            .vector-toc-header {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin-bottom: 12px;
-                padding-bottom: 8px;
-            }
-
-            .vector-toc-header h2 {
-                font-size: 13px;
-                font-weight: 600;
-                margin: 0;
-                color: #202122;
-                border: none;
-            }
-
-            .vector-toc-hide {
-                font-size: 12px;
-                background: transparent;
-                border: none;
-                color: #3073c7;
-                cursor: pointer;
-                padding: 0;
-            }
-
-            .vector-toc-hide:hover {
-                text-decoration: underline;
-            }
-
-            .vector-toc-tree {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-            }
-
-            .vector-toc-tree>li {
-                margin: 0;
-                line-height: 1.8;
-            }
-
-            .vector-toc-tree a {
-                color: #3073c7;
-                text-decoration: none;
-                font-size: 13px;
-                display: block;
-                padding: 4px 0;
-            }
-
-            .vector-toc-tree a:hover {
-                text-decoration: underline;
-            }
-
-            /* TOC Sections */
-            .toc-section {
-                margin: 0;
-            }
-
-            .toc-section summary {
-                cursor: pointer;
-                color: #3073c7;
-                list-style: none;
-                font-size: 13px;
-                padding: 4px 0;
-                display: flex;
-                align-items: center;
-            }
-
-            .toc-section summary::-webkit-details-marker {
-                display: none;
-            }
-
-            .toc-section summary::before {
-                content: "▾";
-                display: inline-block;
-                width: 16px;
-                color: #54595d;
-                font-size: 12px;
-            }
-
-            .toc-section details:not([open]) summary::before {
-                content: "▸";
-            }
-
-            .toc-section summary:hover {
-                text-decoration: underline;
-            }
-
-            .toc-section ul {
-                list-style: none;
-                padding-left: 16px;
-                margin: 0;
-            }
-
-            .toc-section li {
-                margin: 0;
-                line-height: 1.8;
-            }
-
-            .toc-section ul a {
-                font-size: 13px;
-                color: #0645ad;
-            }
-
-            /* Erscheinunbgsbild - rechte Spalte */
-
-
-            /* Main Content */
             .main-content {
-                flex: 1;
-                max-width: 960px;
-                padding: 20px 32px 32px 32px;
+                max-width: 100%;
+                padding: 12px 14px 24px 14px;
             }
 
-            h1 {
-                font-size: 32px;
-                font-family: "Linux Libertine", Georgia, Times, serif;
-                font-weight: normal;
-                border-bottom: 1px solid #a2a9b1;
-                padding-bottom: 8px;
-                margin-bottom: 1px;
-                line-height: 1.3;
+            .infobox {
+                float: none;
+                width: 100%;
+                margin: 0 0 20px 0;
             }
 
             .article-actions {
-                display: flex;
-                align-items: center;
-                font-size: 14px;
-                margin-bottom: 20px;
-                padding: 12px 0 0 0;
-                border-bottom: 1px solid #a2a9b1;
+                flex-wrap: wrap;
+                gap: 0;
+                overflow-x: auto;
             }
 
-            .article-actions-left {
-                display: flex;
-                gap: 0;
+            .article-actions-left,
+            .article-actions-right {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             .article-actions-right {
-                display: flex;
-                gap: 0;
-                margin-left: auto;
+                margin-left: 0;
             }
 
             .article-actions a {
-                color: #3073c7;
-                background: transparent;
-                text-decoration: none;
-                padding: 8px 16px;
-                border: none;
-                cursor: pointer;
-                font-size: 14px;
-                transition: background 0.1s;
-                position: relative;
+                font-size: 13px;
+                padding: 8px 10px;
+                white-space: nowrap;
             }
 
-            .article-actions a:hover {
-                background: #eaecf0;
-            }
-
-            .article-actions a.active {
-                background: #fff;
-                color: #000000;
-                font-weight: 400;
-            }
-
-            .article-actions a.active::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 2px;
-                background: #000000;
-            }
-
-            .tab-content {
-                display: none;
-            }
-
-            .tab-content.active {
-                display: block;
+            h1 {
+                font-size: 24px;
             }
 
             h2 {
-                font-size: 21px;
-                font-family: "Linux Libertine", Georgia, Times, serif;
-                font-weight: normal;
-                border-bottom: 1px solid #a2a9b1;
-                padding-bottom: 4px;
-                margin-top: 32px;
-                margin-bottom: 12px;
-                line-height: 1.3;
-            }
-
-            h3 {
-                font-size: 17px;
-                font-weight: 600;
-                margin-top: 20px;
-                margin-bottom: 10px;
-                line-height: 1.3;
-            }
-
-            p {
-                margin-bottom: 16px;
-                line-height: 1.6;
-            }
-
-            a {
-                color: #3073c7;
-                text-decoration: none;
-            }
-
-            a:visited {
-                color: #285d9e;
-            }
-
-            a:hover {
-                text-decoration: underline;
-            }
-
-            /* Infobox */
-            .infobox {
-                float: right;
-                margin: 0 0 16px 20px;
-                width: 300px;
-                border: 1px solid #a2a9b1;
-                background-color: #f8f9fa;
-                font-size: 13px;
-            }
-
-            .infobox-title {
-                background-color: #eaecf0;
-                padding: 8px 12px;
-                font-weight: bold;
-                text-align: center;
-                font-size: 19px;
-                font-family: "Linux Libertine", Georgia, Times, serif;
-            }
-
-            .infobox-section {
-                background-color: #eaecf0;
-                padding: 6px 12px;
-                font-weight: 600;
-                text-align: center;
-                font-size: 15px;
-            }
-
-            .infobox-image {
-                text-align: center;
-                padding: 12px;
-                background-color: #fff;
-            }
-
-            .infobox-image img {
-                max-width: 100%;
-                height: auto;
-                border: 1px solid #eaecf0;
-            }
-
-            .infobox table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-
-            .infobox th {
-                background-color: #f8f9fa;
-                padding: 6px 12px;
-                text-align: left;
-                font-weight: 600;
-                border-top: 1px solid #eaecf0;
-                vertical-align: top;
-                width: 42%;
-                font-size: 13px;
-            }
-
-            .infobox td {
-                padding: 6px 12px;
-                border-top: 1px solid #eaecf0;
-                background: #fff;
-                font-size: 13px;
-            }
-
-            /* Lists */
-            ul {
-                margin-left: 24px;
-                margin-bottom: 16px;
-            }
-
-            ul li {
-                margin-bottom: 4px;
-            }
-
-            /* Footer */
-            .footer {
-                background-color: #eaecf0;
-                border-top: 1px solid #a2a9b1;
-                padding: 20px;
-                margin-top: 32px;
-                font-size: 12px;
-                color: #54595d;
+                font-size: 18px;
             }
 
             .footer-inner {
-                max-width: 1650px;
-                margin: 0 auto;
-                padding: 0 24px;
+                padding: 0 12px;
             }
 
             .footer a {
-                color: #0645ad;
-                margin: 0 12px 0 0;
-            }
-
-            /* Reference Links */
-            .reference {
-                color: #3073c7;
-                text-decoration: none;
-                font-size: 11px;
-                vertical-align: super;
-            }
-
-            /* Categories */
-            .categories {
-                margin-top: 32px;
-                padding-top: 16px;
-                border-top: 1px solid #a2a9b1;
-                font-size: 13px;
-            }
-
-            .categories-title {
-                font-weight: 600;
-                margin-bottom: 8px;
-            }
-
-            .categories a {
-                margin-right: 12px;
                 display: inline-block;
-                margin-bottom: 4px;
+                margin-bottom: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 19px;
             }
 
-            /* Discussion Tab Styles */
-            .discussion-notice {
-                background-color: #fef6e7;
-                border: 1px solid #fc3;
-                padding: 12px 16px;
-                margin-bottom: 20px;
-                font-size: 13px;
-                border-radius: 2px;
-            }
-
-            .discussion-textarea {
-                width: 100%;
-                min-height: 200px;
-                padding: 12px;
-                border: 1px solid #a2a9b1;
-                font-family: inherit;
-                font-size: 14px;
-                line-height: 1.6;
-                resize: vertical;
-                margin-bottom: 12px;
-                border-radius: 2px;
-            }
-
-            .discussion-textarea:focus {
-                outline: none;
-                border-color: #36c;
-            }
-
-            .discussion-preview {
-                border: 1px solid #a2a9b1;
-                padding: 16px;
-                background: #f8f9fa;
-                margin-bottom: 12px;
-                min-height: 100px;
-                border-radius: 2px;
-            }
-
-            .discussion-button {
-                padding: 8px 16px;
-                background: #36c;
-                color: white;
-                border: none;
-                cursor: pointer;
-                margin-right: 8px;
-                font-size: 14px;
-                border-radius: 2px;
-                transition: background 0.2s;
-            }
-
-            .discussion-button:hover {
-                background: #2a4b8d;
-            }
-
-            /* Scrollbar styling */
-            .vector-toc-sidebar::-webkit-scrollbar {
-                width: 8px;
-            }
-
-            .vector-toc-sidebar::-webkit-scrollbar-track {
-                background: #f1f1f1;
-            }
-
-            .vector-toc-sidebar::-webkit-scrollbar-thumb {
-                background: #c8ccd1;
-                border-radius: 4px;
-            }
-
-            .vector-toc-sidebar::-webkit-scrollbar-thumb:hover {
-                background: #a2a9b1;
-            }
-
-            /* =========================================================
-               Mobile Menu Overlay
-            ========================================================= */
-            .mobile-nav-overlay {
+            .vector-user a:not(:first-child) {
                 display: none;
-                position: fixed;
-                inset: 0;
-                background: rgba(0,0,0,0.4);
-                z-index: 2000;
-            }
-            .mobile-nav-overlay.active {
-                display: block;
-            }
-            .mobile-nav-panel {
-                position: fixed;
-                top: 0; left: 0; bottom: 0;
-                width: 280px;
-                background: #fff;
-                z-index: 2001;
-                overflow-y: auto;
-                padding: 16px;
-                box-shadow: 2px 0 12px rgba(0,0,0,0.2);
-                transform: translateX(-100%);
-                transition: transform 0.25s ease;
-            }
-            .mobile-nav-overlay.active .mobile-nav-panel {
-                transform: translateX(0);
-            }
-            .mobile-nav-close {
-                background: none;
-                border: none;
-                font-size: 22px;
-                cursor: pointer;
-                float: right;
-                color: #202122;
-                padding: 4px 8px;
-            }
-            .mobile-nav-panel h2 {
-                font-size: 16px;
-                border-bottom: 1px solid #eaecf0;
-                padding-bottom: 8px;
-                margin-bottom: 12px;
-                clear: both;
             }
 
-            /* =========================================================
-               TABLET (max-width: 1024px)
-            ========================================================= */
-            @media (max-width: 1024px) {
-                .vector-header-inner {
-                    padding: 8px 16px;
-                    gap: 12px;
-                }
-                .tagline { display: none; }
-                .vector-search { max-width: 280px; }
-                .vector-user a { padding: 6px 6px; font-size: 13px; }
+            .vector-user a:first-child {
+                display: inline-block;
+            }
+        }
 
-                .vector-toc-sidebar {
-                    width: 180px;
-                    padding: 16px 8px 16px 16px;
-                }
-                .main-content {
-                    padding: 16px 20px 28px 20px;
-                }
-                .right-sidebar {
-                    width: 220px;
-                    padding: 16px 16px 16px 8px;
-                }
-                .infobox { width: 240px; }
+        /* =============================================
+           GLITCH OVERLAY
+        ============================================= */
+        #glitch-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.18);
+        }
+
+        #glitch-overlay.active {
+            display: block;
+        }
+
+        /* Scanlines – stärker sichtbar */
+        #glitch-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.18) 2px,
+                    rgba(0, 0, 0, 0.18) 3px);
+            z-index: 2;
+            animation: scanlineShift 0.08s steps(1) infinite;
+        }
+
+        @keyframes scanlineShift {
+            0% {
+                background-position-y: 0px;
             }
 
-            /* =========================================================
-               MOBILE (max-width: 768px)
-            ========================================================= */
-            @media (max-width: 768px) {
-                /* Header */
-                .vector-header-inner {
-                    flex-wrap: wrap;
-                    padding: 8px 12px;
-                    gap: 8px;
-                }
-                .vector-left {
-                    flex: 1 1 100%;
-                    gap: 10px;
-                }
-                .logo-text { font-size: 22px; }
-                .tagline { display: none; }
-                .vector-search {
-                    flex: 1;
-                    max-width: 100%;
-                }
-                .vector-user {
-                    flex: 1 1 100%;
-                    flex-wrap: wrap;
-                    gap: 4px;
-                }
-                .vector-user a { font-size: 13px; padding: 5px 8px; }
-
-                /* Hide sidebars, show hamburger nav */
-                .vector-toc-sidebar { display: none; }
-                .right-sidebar { display: none; }
-
-                .menu {
-                    font-size: 24px;
-                    padding: 4px 8px;
-                }
-                .menu-mobile-btn { display: inline-block; }
-
-                /* Layout: single column */
-                .content-wrapper { flex-direction: column; }
-                .main-content {
-                    max-width: 100%;
-                    padding: 12px 14px 24px 14px;
-                }
-
-                /* Infobox: full width, no float */
-                .infobox {
-                    float: none;
-                    width: 100%;
-                    margin: 0 0 20px 0;
-                }
-
-                /* Article actions: scrollable */
-                .article-actions {
-                    flex-wrap: wrap;
-                    gap: 0;
-                    overflow-x: auto;
-                }
-                .article-actions-left, .article-actions-right {
-                    flex-wrap: nowrap;
-                    overflow-x: auto;
-                    -webkit-overflow-scrolling: touch;
-                }
-                .article-actions-right { margin-left: 0; }
-                .article-actions a { font-size: 13px; padding: 8px 10px; white-space: nowrap; }
-
-                h1 { font-size: 24px; }
-                h2 { font-size: 18px; }
-
-                /* Footer */
-                .footer-inner { padding: 0 12px; }
-                .footer a { display: inline-block; margin-bottom: 6px; }
+            50% {
+                background-position-y: 3px;
             }
 
-            /* =========================================================
-               SMALL MOBILE (max-width: 480px)
-            ========================================================= */
-            @media (max-width: 480px) {
-                .logo-text { font-size: 19px; }
-                .vector-user a:not(:first-child) { display: none; }
-                .vector-user a:first-child { display: inline-block; }
+            100% {
+                background-position-y: 0px;
+            }
+        }
+
+        /* RGB-Chromatic aberration layer */
+        #glitch-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 0, 60, 0.08);
+            mix-blend-mode: screen;
+            animation: rgbShift 0.15s steps(1) infinite;
+            z-index: 3;
+        }
+
+        @keyframes rgbShift {
+            0% {
+                transform: translateX(0px);
+                background: rgba(255, 0, 60, 0.10);
             }
 
-            /* =========================================================
-    Rechte Sidebar
-    ========================================================= */
-            .right-sidebar {
-                width: 260px;
-                flex-shrink: 0;
-                padding: 20px 24px 20px 12px;
-                border-left: 1px solid #eaecf0;
-                background: #fff;
+            25% {
+                transform: translateX(6px);
+                background: rgba(0, 255, 200, 0.08);
             }
 
-            .right-box {
-                margin-bottom: 20px;
-                padding: 12px;
-                background: #f8f9fa;
-                border: 1px solid #eaecf0;
-                border-radius: 2px;
-                font-size: 13px;
+            50% {
+                transform: translateX(-4px);
+                background: rgba(255, 0, 60, 0.12);
             }
 
-            .right-box h3 {
-                margin: 0 0 8px 0;
-                font-size: 14px;
-                font-weight: 600;
+            75% {
+                transform: translateX(3px);
+                background: rgba(0, 80, 255, 0.08);
             }
+
+            100% {
+                transform: translateX(0px);
+                background: rgba(255, 0, 60, 0.10);
+            }
+        }
+
+        /* Horizontal glitch bands – mehrere, breiter */
+        .glitch-band {
+            position: absolute;
+            left: 0;
+            right: 0;
+            animation: bandMove 0.18s steps(1) infinite;
+            z-index: 5;
+        }
+
+        .glitch-band:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .glitch-band:nth-child(2) {
+            animation-delay: 0.06s;
+            animation-duration: 0.22s;
+        }
+
+        .glitch-band:nth-child(3) {
+            animation-delay: 0.12s;
+            animation-duration: 0.14s;
+        }
+
+        /* Dark vignette */
+        .glitch-vignette {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.7) 100%);
+            z-index: 4;
+        }
+
+        @keyframes bandMove {
+            0% {
+                top: 12%;
+                height: 6px;
+                background: rgba(255, 0, 0, 0.35);
+            }
+
+            15% {
+                top: 55%;
+                height: 28px;
+                background: rgba(0, 0, 200, 0.25);
+                mix-blend-mode: screen;
+            }
+
+            30% {
+                top: 78%;
+                height: 8px;
+                background: rgba(255, 0, 0, 0.40);
+            }
+
+            45% {
+                top: 33%;
+                height: 18px;
+                background: rgba(0, 220, 255, 0.20);
+            }
+
+            60% {
+                top: 65%;
+                height: 5px;
+                background: rgba(255, 60, 0, 0.45);
+            }
+
+            75% {
+                top: 20%;
+                height: 22px;
+                background: rgba(0, 0, 180, 0.30);
+            }
+
+            90% {
+                top: 88%;
+                height: 10px;
+                background: rgba(255, 0, 80, 0.35);
+            }
+
+            100% {
+                top: 12%;
+                height: 6px;
+                background: rgba(255, 0, 0, 0.35);
+            }
+        }
+
+        /* Page shake – deutlicher */
+        body.glitching .container,
+        body.glitching header {
+            animation: pageShake 0.12s steps(1) infinite;
+        }
+
+        @keyframes pageShake {
+            0% {
+                transform: translateX(0px) skewX(0deg);
+            }
+
+            20% {
+                transform: translateX(6px) skewX(-0.4deg);
+            }
+
+            40% {
+                transform: translateX(-5px) skewX(0.3deg);
+            }
+
+            60% {
+                transform: translateX(4px) skewX(-0.2deg);
+            }
+
+            80% {
+                transform: translateX(-3px) skewX(0.4deg);
+            }
+
+            100% {
+                transform: translateX(0px) skewX(0deg);
+            }
+        }
+
+        /* Countdown indicator – übernommenes Design */
+        #glitch-countdown {
+            position: fixed;
+            bottom: 20px;
+            right: 24px;
+            z-index: 10000;
+            font-family: monospace;
+            font-size: 18px;
+            color: #22ff00;
+            letter-spacing: 1px;
+            display: none;
+            pointer-events: none;
+            font-weight: bolder;
+        }
+
+        #glitch-countdown.active {
+            display: block;
+        }
+
+        /* Rebooting-Overlay */
+        #glitch-reboot {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10001;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 18px;
+            pointer-events: none;
+        }
+
+        #glitch-reboot.active {
+            display: flex;
+        }
+
+        #glitch-reboot .reboot-box {
+            font-family: monospace;
+            font-size: 13px;
+            color: #ccc;
+            letter-spacing: 2px;
+            text-align: center;
+            text-transform: uppercase;
+            line-height: 2;
+        }
+
+        #glitch-reboot .reboot-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 4px;
+            text-shadow: 0 0 12px rgba(255, 60, 60, 0.9), 2px 0 0 rgba(0, 200, 255, 0.5), -2px 0 0 rgba(255, 0, 80, 0.5);
+            animation: rebootFlicker 0.3s steps(1) infinite;
+        }
+
+        #glitch-reboot .reboot-bar {
+            width: 260px;
+            height: 3px;
+            background: #222;
+            border: 1px solid #444;
+            overflow: hidden;
+        }
+
+        #glitch-reboot .reboot-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #c00, #f55);
+            animation: rebootProgress 2.5s linear forwards;
+        }
+
+        #glitch-reboot .reboot-dots {
+            color: #888;
+            font-size: 11px;
+            animation: rebootDots 0.5s steps(1) infinite;
+        }
+
+        @keyframes rebootFlicker {
+            0% {
+                opacity: 1;
+            }
+
+            45% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            55% {
+                opacity: 1;
+            }
+
+            85% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            95% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes rebootProgress {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes rebootDots {
+            0% {
+                content: '';
+            }
+
+            25% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            75% {
+                opacity: 0.6;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
 <body>
-<!-- Mobile Nav Overlay -->
-<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="closeMobileNav(event)">
-    <div class="mobile-nav-panel">
-        <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
-        <h2>Inhaltsverzeichnis</h2>
-        <ul class="vector-toc-tree">
-            <li><a href="#top" onclick="toggleMobileNav()">(Anfang)</a></li>
-            <li><a href="#etymologie" onclick="toggleMobileNav()">Etymologie</a></li>
-            <li class="toc-section">
-                <details open>
-                    <summary>Geografie</summary>
-                    <ul><li><a href="#nachbargemeinden" onclick="toggleMobileNav()">Nachbargemeinden</a></li></ul>
-                </details>
-            </li>
-            <li class="toc-section">
-                <details open>
-                    <summary>Geschichte</summary>
-                    <ul>
-                        <li><a href="#religion" onclick="toggleMobileNav()">Religion</a></li>
-                        <li><a href="#bevoelkerung" onclick="toggleMobileNav()">Bevölkerungsentwicklung</a></li>
-                    </ul>
-                </details>
-            </li>
-            <li class="toc-section">
-                <details open>
-                    <summary>Kultur und Sehenswürdigkeiten</summary>
-                    <ul>
-                        <li><a href="#musik" onclick="toggleMobileNav()">Musik</a></li>
-                        <li><a href="#veranstaltungen" onclick="toggleMobileNav()">Regelmäßige Veranstaltungen</a></li>
-                    </ul>
-                </details>
-            </li>
-            <li class="toc-section">
-                <details open>
-                    <summary>Politik</summary>
-                    <ul>
-                        <li><a href="#gemeinderat" onclick="toggleMobileNav()">Gemeinderat</a></li>
-                        <li><a href="#buergermeister" onclick="toggleMobileNav()">Bürgermeister</a></li>
-                        <li><a href="#Partei" onclick="toggleMobileNav()">Partei</a></li>
-                    </ul>
-                </details>
-            </li>
-        </ul>
+
+    <!-- GLITCH OVERLAY -->
+    <div id="glitch-overlay">
+        <div class="glitch-band"></div>
+        <div class="glitch-band"></div>
+        <div class="glitch-band"></div>
+        <div class="glitch-vignette"></div>
     </div>
-</div>
 
-<!-- Header -->
-<header class="vector-header">
-    <div class="vector-header-inner">
-        <div class="vector-left">
-            <span class="menu" onclick="toggleMobileNav()" aria-label="Menü öffnen" role="button" tabindex="0">☰</span>
-            <a class="logo-text" href="https://de.wikipedia.org/">Nincspedia</a>
-            <span class="tagline">Die weniger freie Enzyklopädie</span>
-
-            <div class="vector-search">
-                <input type="search" placeholder="Wikipedia durchsuchen">
-                <button href="info.html"><b>Suchen</b></button>
-            </div>
+    <!-- Rebooting Screen -->
+    <div id="glitch-reboot">
+        <div class="reboot-title">SYSTEM REBOOTING</div>
+        <div class="reboot-box">
+            Seite wird neu initialisiert<span class="reboot-dots">...</span>
         </div>
-
-        <div class="vector-user">
-            <a href="info.html">Jetzt spenden</a>
-            <a href="info.html">Benutzerkonto erstellen</a>
-            <a href="info.html">Anmelden</a>
-
+        <div class="reboot-bar">
+            <div class="reboot-bar-fill"></div>
+        </div>
+        <div class="reboot-box" style="font-size:10px; color:#555;">wikipedia.org/wiki/Nincshof — kernel panic recovery
         </div>
     </div>
-</header>
 
-<!-- Main Container -->
-<div class="container">
-    <div class="content-wrapper">
-        <!-- Table of Contents Sidebar -->
-        <nav class="vector-toc-sidebar" aria-labelledby="toc-title">
-            <div class="vector-toc-header">
-                <h2 id="toc-title">Inhaltsverzeichnis</h2>
-                <button class="vector-toc-hide" onclick="toggleTOC()">verbergen</button>
-            </div>
+    <!-- Countdown indicator -->
+    <div id="glitch-countdown"></div>
 
-            <ul class="vector-toc-tree" id="toc-list">
-                <li><a href="#top">(Anfang)</a></li>
-                
-                <li><a href="#etymologie">Etymologie</a></li>
-
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="closeMobileNav(event)">
+        <div class="mobile-nav-panel">
+            <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+            <h2>Inhaltsverzeichnis</h2>
+            <ul class="vector-toc-tree">
+                <li><a href="#top" onclick="toggleMobileNav()">(Anfang)</a></li>
+                <li><a href="#etymologie" onclick="toggleMobileNav()">Etymologie</a></li>
                 <li class="toc-section">
                     <details open>
                         <summary>Geografie</summary>
                         <ul>
-                            <li><a href="#nachbargemeinden">Nachbargemeinden</a></li>
+                            <li><a href="#nachbargemeinden" onclick="toggleMobileNav()">Nachbargemeinden</a></li>
                         </ul>
                     </details>
                 </li>
-
                 <li class="toc-section">
                     <details open>
                         <summary>Geschichte</summary>
                         <ul>
-                            <li><a href="#religion">Religion</a></li>
-                            <li><a href="#bevoelkerung">Bevölkerungsentwicklung</a></li>
+                            <li><a href="#religion" onclick="toggleMobileNav()">Religion</a></li>
+                            <li><a href="#bevoelkerung" onclick="toggleMobileNav()">Bevölkerungsentwicklung</a></li>
                         </ul>
                     </details>
                 </li>
-
                 <li class="toc-section">
                     <details open>
                         <summary>Kultur und Sehenswürdigkeiten</summary>
                         <ul>
-                            <li><a href="#musik">Musik</a></li>
-                            <li><a href="#veranstaltungen">Regelmäßige Veranstaltungen</a></li>
+                            <li><a href="#musik" onclick="toggleMobileNav()">Musik</a></li>
+                            <li><a href="#veranstaltungen" onclick="toggleMobileNav()">Regelmäßige Veranstaltungen</a>
+                            </li>
                         </ul>
                     </details>
                 </li>
-
                 <li class="toc-section">
                     <details open>
                         <summary>Politik</summary>
                         <ul>
-                            <li><a href="#gemeinderat">Gemeinderat</a></li>
-                            <li><a href="#buergermeister">Bürgermeister</a></li>
-                            <li><a href="#Partei">Partei</a></li>
+                            <li><a href="#gemeinderat" onclick="toggleMobileNav()">Gemeinderat</a></li>
+                            <li><a href="#buergermeister" onclick="toggleMobileNav()">Bürgermeister</a></li>
+                            <li><a href="#Partei" onclick="toggleMobileNav()">Partei</a></li>
                         </ul>
                     </details>
                 </li>
             </ul>
-        </nav>
+        </div>
+    </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <h1>Nincshof</h1>
+    <!-- Header -->
+    <header class="vector-header">
+        <div class="vector-header-inner">
+            <div class="vector-left">
+                <span class="menu" onclick="toggleMobileNav()" aria-label="Menü öffnen" role="button"
+                    tabindex="0">☰</span>
+                <a class="logo-text" href="https://de.wikipedia.org/">Nincspedia</a>
+                <span class="tagline">Die weniger freie Enzyklopädie</span>
 
-            <div class="article-actions">
-                <div class="article-actions-left">
-                    <a href="#" class="tab-link active" onclick="switchTab(event, 'artikel')">Artikel</a>
-                    <a href="https://padlet.com/janikern/nincspedia-beitrag-nincshof-diskussion-10465qz1dtnb4tqa" class="tab-link">Diskussion</a>
-                </div>
-                <div class="article-actions-right">
-                    <a href="#" class="tab-link active">Lesen</a>
-                    <a href="info.html" class="tab-link">Bearbeiten</a>
-                    <a href="info.html" class="tab-link">Quelltext bearbeiten</a>
-                    <a href="info.html" class="tab-link">Versionsgeschichte</a>
-                    <a href="info.html" class="tab-link">Werkzeuge</a>
+                <div class="vector-search">
+                    <input type="search" placeholder="Wikipedia durchsuchen">
+                    <button><b>Suchen</b></button>
                 </div>
             </div>
 
-            <!-- Artikel Tab -->
-            <div id="artikel" class="tab-content active">
-                <!-- Infobox -->
-                <div class="infobox">
-                    <div class="infobox-title">Nincshof</div>
-                    <div class="infobox-image">
-                        <img src="wappen nincshof.png"
-                            alt="Nincshofwappen; altes Gebäude auf grünenen Wiesen und vor See/Pool">
-                        <img src="Nincshof_luftbild.png" alt="Luftaufnahme von Nincshof">
-                    </div>
-                    <div class="infobox-section">Basisdaten</div>
-                    <table>
-                        <tr>
-                            <th>Staat:</th>
-                            <td><a href="https://de.wikipedia.org/wiki/%C3%96sterreich">Österreich</a></td>
-                        </tr>
-                        <tr>
-                            <th>Land:</th>
-                            <td><a href="https://de.wikipedia.org/wiki/Burgenland">Burgenland</a></td>
-                        </tr>
-                        <tr>
-                            <th>Bezirk:</th>
-                            <td><a href="https://de.wikipedia.org/wiki/Bezirk_Neusiedl_am_See">Neusiedl am See</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Kfz-Kennzeichen:</th>
-                            <td>ND</td>
-                        </tr>
-                        <tr>
-                            <th>Fläche:</th>
-                            <td>40.67 km²</td>
-                        </tr>
-                        <tr>
-                            <th>Koordinaten:</th>
-                            <td>47°42'47.3"N,16°59'33.7"E</td>
-                        </tr>
-                        <tr>
-                            <th>Höhe:</th>
-                            <td>121 m ü. A.</td>
-                        </tr>
-                        <tr>
-                            <th>Einwohner:</th>
-                            <td>2088 (Stand 2026)</td>
-                        </tr>
-                        <tr>
-                            <th>Bevölkerungs­dichte:</th>
-                            <td>17 Einw. pro km²</td>
-                        </tr>
-                        <tr>
-                            <th>Postleitzahl:</th>
-                            <td>7164</td>
-                        </tr>
-                        <tr>
-                            <th>Vorwahl:</th>
-                            <td>02178</td>
-                        </tr>
-                        <tr>
-                            <th>Gemeinde­kennziffer:</th>
-                            <td>1 07 02</td>
-                        </tr>
-                        <tr>
-                            <th>Adresse der Gemeinde­verwaltung:</th>
-                            <td>Hauptstraße 1 7164 Nincshof</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <p><strong>Nincshof</strong> ist eine Gemeinde im österreichischen Bundesland <a
-                        href="https://de.wikipedia.org/wiki/Burgenland">Burgenland</a> im <a href="https://de.wikipedia.org/wiki/Bezirk_Neusiedl_am_See">Bezirk Neusiedl am See</a>. Die Gemeinde liegt im
-                    nördlichen Burgenland und ist Teil der Region um den <a href="https://de.wikipedia.org/wiki/Bezirk_Neusiedl_am_See">Neusiedler See</a>.</p>
-
-                <h2 id="etymologie">Etymologie</h2>
-                <p>Der Name Nincshof hat seinen Ursprung in der historischen Besiedlung der Region. Die Endung
-                    "-hof" deutet auf einen landwirtschaftlichen Ursprung hin, während "Nincs" das ungarische Wort
-                    für "es gibt nicht" oder "nicht vorhanden" ist.</p>
-
-                <h2 id="geografie">Geografie</h2>
-                <p>Nincshof liegt im nördlichen Burgenland in der Nähe des Neusiedler Sees. Die Gemeinde erstreckt
-                    sich über eine Fläche von 40.67 km² und befindet sich auf einer Höhe von etwa 121 Metern über
-                    Adria. In der Nähe
-                    der kleinen Gemeinde befindet sich der <a href="https://de.wikipedia.org/wiki/Einser-Kanal">Einser-Kanal</a>, der parllel zur Grenze
-                    zwischen Ungarn und Österreich verläuft.
-                </p>
-
-                <h3 id="nachbargemeinden">Nachbargemeinden</h3>
-                <p>Die Gemeinde grenzt an mehrere andere Ortschaften im Bezirk Neusiedl am See. Die genaue
-                    geographische Lage macht Nincshof zu einem Teil der charakteristischen Landschaft des nördlichen
-                    Burgenlandes.</p>
-
-                <h2 id="geschichte">Geschichte</h2>
-                <p>Die Geschichte von Nincshof ist eng mit der Entwicklung des nördlichen Burgenlandes verbunden.
-                    Wie viele Gemeinden in dieser Region wurde auch Nincshof durch die wechselvolle Geschichte der
-                    österreichisch-ungarischen Grenzregion geprägt.</p>
-
-                <h3 id="religion">Religion</h3>
-                <p>Die religiöse Struktur der Gemeinde spiegelt die typische konfessionelle Zusammensetzung des
-                    Burgenlandes wider, mit einer Mehrheit katholischer Einwohner. Charakteristisch für die Gemeinde
-                    ist alledings das sogenannte "Jesusschwein" - ein Schwein, das im Rahmen des traditionellen
-                    Krippenspiels auftritt.</p>
-
-                <h3 id="bevoelkerung">Bevölkerungsentwicklung</h3>
-                <p>Die Einwohnerzahl von Nincshof hat sich im Laufe der Jahre entwickelt und unterliegt den
-                    typischen Trends ländlicher Gemeinden in Österreich.</p>
-
-                <h2 id="kultur">Kultur und Sehenswürdigkeiten</h2>
-                <p>Nincshof bietet verschiedene kulturelle Angebote und Sehenswürdigkeiten, die die lokale Tradition
-                    und Geschichte widerspiegeln. Die Gemeinde zeichnet sich darüber hinaus durch Legenden aus.
-                    Beispielsweise gibt es die Legende von Nincshof, das einst völlig unbemerkt auf Stelzen im Sumpf
-                    gelegen haben soll.</p>
-
-                <h3 id="musik">Musik</h3>
-                <p>Die musikalische Tradition spielt eine wichtige Rolle im kulturellen Leben der Gemeinde.</p>
-
-                <h3 id="veranstaltungen">Regelmäßige Veranstaltungen</h3>
-                <p>Im Jahresverlauf finden verschiedene Veranstaltungen statt, die das Gemeindeleben bereichern und
-                    Besucher anziehen. Charakteristisch für Nincshof sind Radfahrer, die bei ihrer Rundfahrt um den
-                    Neusiedler See häufig einen Halt in der idyllischen Gemeinde machen.</p>
-
-                <h2 id="politik">Politik</h2>
-                <p>Die politische Struktur von Nincshof folgt dem österreichischen Gemeindewesen mit einem gewählten
-                    Gemeinderat und Bürgermeister.</p>
-
-                <h3 id="gemeinderat">Gemeinderat</h3>
-                <p>Der Gemeinderat besteht aus gewählten Vertretern der örtlichen Bevölkerung und ist für die
-                    kommunalen Belange zuständig.</p>
-
-                <h3 id="buergermeister">Bürgermeister</h3>
-                <p>Der Bürgermeister wird vom Gemeinderat gewählt und vertritt die Gemeinde nach außen.</p>
-
-                <h3 id="Partei">Partei</h3>
-                <p>Nincshof folgt nicht der traditionellen Parteienwelt Österreichs. In Nincshof regieren die
-                    Oblivisten (Oblivistische Partei Nincshof).
-
-                <h2 id="siehe-auch">Siehe auch</h2>
-                <ul>
-                    <li><a href="https://de.wikipedia.org/wiki/Burgenland">Burgenland</a></li>
-                    <li><a href="https://de.wikipedia.org/wiki/Bezirk_Neusiedl_am_See">Bezirk Neusiedl am See</a></li>
-                    <li><a href="https://de.wikipedia.org/wiki/Neusiedler_See">Neusiedler See</a></li>
-                </ul>
-
-                <!-- Categories -->
-                <div class="categories">
-                    <div class="categories-title">Kategorien:</div>
-                    <a href="#">Gemeinde im Burgenland</a>
-                    <a href="#">Ort im Bezirk Neusiedl am See</a>
-                </div>
-            </div>
-
-            <!-- Diskussion Tab -->
-            <div id="diskussion" class="tab-content">
-                <div class="discussion-notice">
-                    Dies ist die Diskussionsseite für den Artikel "Nincshof". Hier können Verbesserungsvorschläge,
-                    Fragen und Anmerkungen zum Artikel diskutiert werden.
-                </div>
-
-                <h2>Neuer Diskussionsbeitrag</h2>
-                <textarea class="discussion-textarea" id="discussionInput"
-                    placeholder="Schreiben Sie hier Ihren Diskussionsbeitrag..."></textarea>
-
-                <button class="discussion-button" onclick="showPreview()">Vorschau anzeigen</button>
-
-                <h2 style="margin-top: 32px;">Vorschau</h2>
-                <div class="discussion-preview" id="discussionPreview">
-                    <em style="color: #54595d;">Die Vorschau Ihres Textes wird hier angezeigt...</em>
-                </div>
+            <div class="vector-user">
+                <a href="info.html">Jetzt spenden</a>
+                <a href="info.html">Benutzerkonto erstellen</a>
+                <a href="info.html">Anmelden</a>
             </div>
         </div>
+    </header>
 
-        <aside class="right-sidebar">
-            <div class="appearance-menu">
-                <button onclick="toggleAppearance()">⚙ Erscheinungsbild</button>
-                <div class="appearance-dropdown" id="appearanceDropdown">
-                    <h3>Erscheinungsbild</h3>
-                    <div class="appearance-options">
-                        <div class="appearance-option">
-                            <label>Breite</label>
-                            <div class="appearance-buttons">
-                                <button class="appearance-btn active"
-                                    onclick="setWidth('standard')">Standard</button>
-                                <button class="appearance-btn" onclick="setWidth('breit')">Breit</button>
-                            </div>
+    <!-- Main Container -->
+    <div class="container">
+        <div class="content-wrapper">
+            <!-- Table of Contents Sidebar -->
+            <nav class="vector-toc-sidebar" aria-labelledby="toc-title">
+                <div class="vector-toc-header">
+                    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+                    <button class="vector-toc-hide" onclick="toggleTOC()">verbergen</button>
+                </div>
+
+                <ul class="vector-toc-tree" id="toc-list">
+                    <li><a href="#top">(Anfang)</a></li>
+                    <li><a href="#etymologie">Etymologie</a></li>
+
+                    <li class="toc-section">
+                        <details open>
+                            <summary>Geografie</summary>
+                            <ul>
+                                <li><a href="#nachbargemeinden">Nachbargemeinden</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="toc-section">
+                        <details open>
+                            <summary>Geschichte</summary>
+                            <ul>
+                                <li><a href="#religion">Religion</a></li>
+                                <li><a href="#bevoelkerung">Bevölkerungsentwicklung</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="toc-section">
+                        <details open>
+                            <summary>Kultur und Sehenswürdigkeiten</summary>
+                            <ul>
+                                <li><a href="#musik">Musik</a></li>
+                                <li><a href="#veranstaltungen">Regelmäßige Veranstaltungen</a></li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="toc-section">
+                        <details open>
+                            <summary>Politik</summary>
+                            <ul>
+                                <li><a href="#gemeinderat">Gemeinderat</a></li>
+                                <li><a href="#buergermeister">Bürgermeister</a></li>
+                                <!-- PARTEI LINK – triggers glitch -->
+                                <li><a href="#Partei" id="toc-partei-link"
+                                        onclick="triggerParteiGlitch(event)">Partei</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <h1>Nincshof</h1>
+
+                <div class="article-actions">
+                    <div class="article-actions-left">
+                        <a href="#" class="tab-link active" onclick="switchTab(event, 'artikel')">Artikel</a>
+                        <a href="https://padlet.com/janikern/nincspedia-beitrag-nincshof-diskussion-10465qz1dtnb4tqa"
+                            class="tab-link">Diskussion</a>
+                    </div>
+                    <div class="article-actions-right">
+                        <a href="#" class="tab-link active">Lesen</a>
+                        <a href="info.html" class="tab-link">Bearbeiten</a>
+                        <a href="info.html" class="tab-link">Quelltext bearbeiten</a>
+                        <a href="info.html" class="tab-link">Versionsgeschichte</a>
+                        <a href="info.html" class="tab-link">Werkzeuge</a>
+                    </div>
+                </div>
+
+                <!-- Artikel Tab – VOLLSTÄNDIGE VERSION (vor Glitch) -->
+                <div id="artikel" class="tab-content active">
+                    <!-- Infobox -->
+                    <div class="infobox">
+                        <div class="infobox-title">Nincshof</div>
+                        <div class="infobox-image">
+                            <img src="wappen nincshof.png" alt="Nincshofwappen">
+                            <img src="Nincshof_luftbild.png" alt="Luftaufnahme von Nincshof">
                         </div>
-                        <div class="appearance-option">
-                            <label>Schriftgröße</label>
-                            <div class="appearance-buttons">
-                                <button class="appearance-btn" onclick="setFontSize('klein')">Klein</button>
-                                <button class="appearance-btn active"
-                                    onclick="setFontSize('standard')">Standard</button>
-                                <button class="appearance-btn" onclick="setFontSize('groß')">Groß</button>
+                        <div class="infobox-section">Basisdaten</div>
+                        <table>
+                            <tr>
+                                <th>Staat:</th>
+                                <td><a href="https://de.wikipedia.org/wiki/%C3%96sterreich">Österreich</a></td>
+                            </tr>
+                            <tr>
+                                <th>Land:</th>
+                                <td><a href="https://de.wikipedia.org/wiki/Burgenland">Burgenland</a></td>
+                            </tr>
+                            <tr>
+                                <th>Bezirk:</th>
+                                <td><a href="https://de.wikipedia.org/wiki/Bezirk_Neusiedl_am_See">Neusiedl am See</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Kfz-Kennzeichen:</th>
+                                <td id="ib-kfz">ND</td>
+                            </tr>
+                            <tr>
+                                <th>Fläche:</th>
+                                <td id="ib-flaeche">40.67 km²</td>
+                            </tr>
+                            <tr>
+                                <th>Koordinaten:</th>
+                                <td id="ib-koordinaten">47°42'47.3"N,16°59'33.7"E</td>
+                            </tr>
+                            <tr>
+                                <th>Höhe:</th>
+                                <td>121 m ü. A.</td>
+                            </tr>
+                            <tr>
+                                <th>Einwohner:</th>
+                                <td id="ib-einwohner">2088 (Stand 2026)</td>
+                            </tr>
+                            <tr>
+                                <th>Bevölkerungs­dichte:</th>
+                                <td id="ib-dichte">17 Einw. pro km²</td>
+                            </tr>
+                            <tr>
+                                <th>Postleitzahl:</th>
+                                <td id="ib-plz">7164</td>
+                            </tr>
+                            <tr>
+                                <th>Vorwahl:</th>
+                                <td id="ib-vorwahl">02178</td>
+                            </tr>
+                            <tr>
+                                <th>Gemeinde­kennziffer:</th>
+                                <td id="ib-kennziffer">1 07 02</td>
+                            </tr>
+                            <tr>
+                                <th>Adresse der Gemeinde­verwaltung:</th>
+                                <td id="ib-adresse">Hauptstraße 1 7164 Nincshof</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <p id="intro-full"><strong>Nincshof</strong> ist eine Gemeinde im österreichischen Bundesland <a
+                            href="https://de.wikipedia.org/wiki/Burgenland">Burgenland</a> im <a
+                            href="https://de.wikipedia.org/wiki/Bezirk_Neusiedl_am_See">Bezirk Neusiedl am See</a>. Die
+                        Gemeinde liegt im nördlichen Burgenland und ist Teil der Region um den <a
+                            href="https://de.wikipedia.org/wiki/Bezirk_Neusiedl_am_See">Neusiedler See</a>.</p>
+
+                    <h2 id="etymologie">Etymologie</h2>
+                    <p id="etymologie-text">Der Name Nincshof hat seinen Ursprung in der historischen Besiedlung der
+                        Region. Die Endung "-hof" deutet auf einen landwirtschaftlichen Ursprung hin, während "Nincs"
+                        das ungarische Wort für "es gibt nicht" oder "nicht vorhanden" ist.</p>
+
+                    <h2 id="geografie">Geografie</h2>
+                    <p id="geografie-text">Nincshof liegt im nördlichen Burgenland in der Nähe des Neusiedler Sees. Die
+                        Gemeinde erstreckt sich über eine Fläche von 40.67 km² und befindet sich auf einer Höhe von etwa
+                        121 Metern über Adria. In der Nähe der kleinen Gemeinde befindet sich der <a
+                            href="https://de.wikipedia.org/wiki/Einser-Kanal">Einser-Kanal</a>, der parllel zur Grenze
+                        zwischen Ungarn und Österreich verläuft.</p>
+
+                    <h3 id="nachbargemeinden">Nachbargemeinden</h3>
+                    <p id="nachbar-text">Die Gemeinde grenzt an mehrere andere Ortschaften im Bezirk Neusiedl am See.
+                        Die genaue geographische Lage macht Nincshof zu einem Teil der charakteristischen Landschaft des
+                        nördlichen Burgenlandes.</p>
+
+                    <h2 id="geschichte">Geschichte</h2>
+                    <p id="geschichte-text">Die Geschichte von Nincshof ist eng mit der Entwicklung des nördlichen
+                        Burgenlandes verbunden. Wie viele Gemeinden in dieser Region wurde auch Nincshof durch die
+                        wechselvolle Geschichte der österreichisch-ungarischen Grenzregion geprägt.</p>
+
+                    <h3 id="religion">Religion</h3>
+                    <p id="religion-text">Die religiöse Struktur der Gemeinde spiegelt die typische konfessionelle
+                        Zusammensetzung des Burgenlandes wider, mit einer Mehrheit katholischer Einwohner.
+                        Charakteristisch für die Gemeinde ist alledings das sogenannte "Jesusschwein" - ein Schwein, das
+                        im Rahmen des traditionellen Krippenspiels auftritt.</p>
+
+                    <h3 id="bevoelkerung">Bevölkerungsentwicklung</h3>
+                    <p id="bevoelkerung-text">Die Einwohnerzahl von Nincshof hat sich im Laufe der Jahre entwickelt und
+                        unterliegt den typischen Trends ländlicher Gemeinden in Österreich.</p>
+
+                    <h2 id="kultur">Kultur und Sehenswürdigkeiten</h2>
+                    <p id="kultur-text">Nincshof bietet verschiedene kulturelle Angebote und Sehenswürdigkeiten, die die
+                        lokale Tradition und Geschichte widerspiegeln. Die Gemeinde zeichnet sich darüber hinaus durch
+                        Legenden aus. Beispielsweise gibt es die Legende von Nincshof, das einst völlig unbemerkt auf
+                        Stelzen im Sumpf gelegen haben soll.</p>
+
+                    <h3 id="musik">Musik</h3>
+                    <p id="musik-text">Die musikalische Tradition spielt eine wichtige Rolle im kulturellen Leben der
+                        Gemeinde.</p>
+
+                    <h3 id="veranstaltungen">Regelmäßige Veranstaltungen</h3>
+                    <p id="veranstaltungen-text">Im Jahresverlauf finden verschiedene Veranstaltungen statt, die das
+                        Gemeindeleben bereichern und Besucher anziehen. Charakteristisch für Nincshof sind Radfahrer,
+                        die bei ihrer Rundfahrt um den Neusiedler See häufig einen Halt in der idyllischen Gemeinde
+                        machen.</p>
+
+                    <h2 id="politik">Politik</h2>
+                    <p id="politik-text">Die politische Struktur von Nincshof folgt dem österreichischen Gemeindewesen
+                        mit einem gewählten Gemeinderat und Bürgermeister.</p>
+
+                    <h3 id="gemeinderat">Gemeinderat</h3>
+                    <p id="gemeinderat-text">Der Gemeinderat besteht aus gewählten Vertretern der örtlichen Bevölkerung
+                        und ist für die kommunalen Belange zuständig.</p>
+
+                    <h3 id="buergermeister">Bürgermeister</h3>
+                    <p id="buergermeister-text">Der Bürgermeister wird vom Gemeinderat gewählt und vertritt die Gemeinde
+                        nach außen.</p>
+
+                    <h3 id="Partei">Partei</h3>
+                    <p id="partei-text">Nincshof folgt nicht der traditionellen Parteienwelt Österreichs. In Nincshof
+                        regieren die Oblivisten (Oblivistische Partei Nincshof).</p>
+
+                    <h2 id="siehe-auch">Siehe auch</h2>
+                    <ul id="siehe-auch-list">
+                        <li><a href="https://de.wikipedia.org/wiki/Burgenland">Burgenland</a></li>
+                        <li><a href="https://de.wikipedia.org/wiki/Bezirk_Neusiedl_am_See">Bezirk Neusiedl am See</a>
+                        </li>
+                        <li><a href="https://de.wikipedia.org/wiki/Neusiedler_See">Neusiedler See</a></li>
+                    </ul>
+
+                    <div class="categories">
+                        <div class="categories-title">Kategorien:</div>
+                        <a href="#">Gemeinde im Burgenland</a>
+                        <a href="#">Ort im Bezirk Neusiedl am See</a>
+                    </div>
+                </div>
+
+                <!-- Diskussion Tab -->
+                <div id="diskussion" class="tab-content">
+                    <div class="discussion-notice">
+                        Dies ist die Diskussionsseite für den Artikel "Nincshof". Hier können Verbesserungsvorschläge,
+                        Fragen und Anmerkungen zum Artikel diskutiert werden.
+                    </div>
+                    <h2>Neuer Diskussionsbeitrag</h2>
+                    <textarea class="discussion-textarea" id="discussionInput"
+                        placeholder="Schreiben Sie hier Ihren Diskussionsbeitrag..."></textarea>
+                    <button class="discussion-button" onclick="showPreview()">Vorschau anzeigen</button>
+                    <h2 style="margin-top: 32px;">Vorschau</h2>
+                    <div class="discussion-preview" id="discussionPreview">
+                        <em style="color: #54595d;">Die Vorschau Ihres Textes wird hier angezeigt...</em>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="right-sidebar">
+                <div class="appearance-menu">
+                    <button onclick="toggleAppearance()">⚙ Erscheinungsbild</button>
+                    <div class="appearance-dropdown" id="appearanceDropdown">
+                        <h3>Erscheinungsbild</h3>
+                        <div class="appearance-options">
+                            <div class="appearance-option">
+                                <label>Breite</label>
+                                <div class="appearance-buttons">
+                                    <button class="appearance-btn active"
+                                        onclick="setWidth('standard')">Standard</button>
+                                    <button class="appearance-btn" onclick="setWidth('breit')">Breit</button>
+                                </div>
+                            </div>
+                            <div class="appearance-option">
+                                <label>Schriftgröße</label>
+                                <div class="appearance-buttons">
+                                    <button class="appearance-btn" onclick="setFontSize('klein')">Klein</button>
+                                    <button class="appearance-btn active"
+                                        onclick="setFontSize('standard')">Standard</button>
+                                    <button class="appearance-btn" onclick="setFontSize('groß')">Groß</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </aside>
+            </aside>
+        </div>
     </div>
-</div>
 
-<!-- Footer -->
-<div class="footer">
-    <div class="footer-inner">
-        <a href="https://marabu-studios.com/privacy%20policy/">Datenschutz</a>
-        <a href="wikipedia.org">Über Wikipedia</a>
-        <a href="https://marabu-studios.com/privacy%20policy/">Impressum</a>
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-inner">
+            <a href="https://marabu-studios.com/privacy%20policy/">Datenschutz</a>
+            <a href="wikipedia.org">Über Wikipedia</a>
+            <a href="https://marabu-studios.com/privacy%20policy/">Impressum</a>
+        </div>
     </div>
-</div>
 
-<script>
-    function toggleMobileNav() {
-        const overlay = document.getElementById('mobileNavOverlay');
-        overlay.classList.toggle('active');
-    }
-
-    function closeMobileNav(event) {
-        // Close only when clicking the overlay backdrop, not the panel
-        if (event.target === document.getElementById('mobileNavOverlay')) {
-            document.getElementById('mobileNavOverlay').classList.remove('active');
+    <script>
+        /* =============================================
+           STANDARD FUNCTIONS (unverändert)
+        ============================================= */
+        function toggleMobileNav() {
+            const overlay = document.getElementById('mobileNavOverlay');
+            overlay.classList.toggle('active');
         }
-    }
 
-    function switchTab(event, tabName) {
-        event.preventDefault();
+        function closeMobileNav(event) {
+            if (event.target === document.getElementById('mobileNavOverlay')) {
+                document.getElementById('mobileNavOverlay').classList.remove('active');
+            }
+        }
 
-        const tabContents = document.querySelectorAll('.tab-content');
-        tabContents.forEach(content => {
-            content.classList.remove('active');
+        function switchTab(event, tabName) {
+            event.preventDefault();
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function showPreview() {
+            const input = document.getElementById('discussionInput');
+            const preview = document.getElementById('discussionPreview');
+            const text = input.value;
+            if (text.trim() === '') {
+                preview.innerHTML = '<em style="color: #54595d;">Die Vorschau Ihres Textes wird hier angezeigt...</em>';
+            } else {
+                preview.innerHTML = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
+            }
+        }
+
+        function toggleTOC() {
+            const tocList = document.getElementById('toc-list');
+            const button = document.querySelector('.vector-toc-hide');
+            if (tocList.style.display === 'none') {
+                tocList.style.display = 'block';
+                button.textContent = 'verbergen';
+            } else {
+                tocList.style.display = 'none';
+                button.textContent = 'anzeigen';
+            }
+        }
+
+        function toggleAppearance() {
+            document.getElementById('appearanceDropdown').classList.toggle('active');
+        }
+
+        function setWidth(width) {
+            document.querySelectorAll('.appearance-option:first-child .appearance-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.querySelector('.container').style.maxWidth = width === 'breit' ? '100%' : '1650px';
+        }
+
+        function setFontSize(size) {
+            document.querySelectorAll('.appearance-option:last-child .appearance-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.body.style.fontSize = size === 'klein' ? '13px' : size === 'groß' ? '16px' : '14px';
+        }
+
+        document.addEventListener('click', function (event) {
+            const menu = document.querySelector('.appearance-menu');
+            const dropdown = document.getElementById('appearanceDropdown');
+            if (!menu.contains(event.target)) dropdown.classList.remove('active');
         });
 
-        const tabLinks = document.querySelectorAll('.tab-link');
-        tabLinks.forEach(link => {
-            link.classList.remove('active');
-        });
+        /* =============================================
+           GLITCH SYSTEM
+        ============================================= */
 
-        document.getElementById(tabName).classList.add('active');
-        event.target.classList.add('active');
-    }
+        let glitchTriggered = false; // nur einmal auslösen
+        let countdownInterval = null;
 
-    function showPreview() {
-        const input = document.getElementById('discussionInput');
-        const preview = document.getElementById('discussionPreview');
-        const text = input.value;
+        function triggerParteiGlitch(event) {
+            // Normales Scrollen erlauben
+            if (glitchTriggered) return; // bereits ausgelöst – kein erneuter Glitch
+            glitchTriggered = true;
 
-        if (text.trim() === '') {
-            preview.innerHTML = '<em style="color: #54595d;">Die Vorschau Ihres Textes wird hier angezeigt...</em>';
-        } else {
-            const formattedText = text
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/\n/g, '<br>');
-            preview.innerHTML = formattedText;
+            const countdown = document.getElementById('glitch-countdown');
+            let secondsLeft = 15;
+
+            countdown.classList.add('active');
+            countdown.textContent = `Fehler erkannt – ${secondsLeft}s`;
+
+            countdownInterval = setInterval(() => {
+                secondsLeft--;
+                if (secondsLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    countdown.classList.remove('active');
+                    startGlitch();
+                } else {
+                    countdown.textContent = `Fehler erkannt – ${secondsLeft}s`;
+                }
+            }, 1000);
         }
-    }
 
-    function toggleTOC() {
-        const tocList = document.getElementById('toc-list');
-        const button = document.querySelector('.vector-toc-hide');
+        function startGlitch() {
+            const overlay = document.getElementById('glitch-overlay');
+            overlay.classList.add('active');
+            document.body.classList.add('glitching');
 
-        if (tocList.style.display === 'none') {
-            tocList.style.display = 'block';
-            button.textContent = 'verbergen';
-        } else {
-            tocList.style.display = 'none';
-            button.textContent = 'anzeigen';
+            // Glitch läuft 2.5 Sekunden, dann Reboot-Screen
+            setTimeout(() => {
+                endGlitch();
+            }, 2500);
         }
-    }
 
-    function toggleAppearance() {
-        const dropdown = document.getElementById('appearanceDropdown');
-        dropdown.classList.toggle('active');
-    }
+        function endGlitch() {
+            const overlay = document.getElementById('glitch-overlay');
+            const reboot = document.getElementById('glitch-reboot');
 
-    function setWidth(width) {
-        const buttons = document.querySelectorAll('.appearance-option:first-child .appearance-btn');
-        buttons.forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+            // Kurzes Aufblitzen vor dem Ende
+            overlay.style.background = 'white';
+            overlay.style.opacity = '1';
 
-        const container = document.querySelector('.container');
-        if (width === 'breit') {
-            container.style.maxWidth = '100%';
-        } else {
-            container.style.maxWidth = '1650px';
+            setTimeout(() => {
+                overlay.classList.remove('active');
+                overlay.style.background = '';
+                overlay.style.opacity = '';
+                document.body.classList.remove('glitching');
+
+                // Reboot-Screen einblenden
+                reboot.classList.add('active');
+
+                // Nach 3s Reboot-Screen ausblenden + Inhalt ersetzen
+                setTimeout(() => {
+                    reboot.classList.remove('active');
+                    applyPostGlitchContent();
+                }, 3000);
+            }, 150);
         }
-    }
 
-    function setFontSize(size) {
-        const buttons = document.querySelectorAll('.appearance-option:last-child .appearance-btn');
-        buttons.forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+        function applyPostGlitchContent() {
+            // --- Texte die nach dem Glitch verschwinden / kürzer werden ---
 
-        const body = document.body;
-        if (size === 'klein') {
-            body.style.fontSize = '13px';
-        } else if (size === 'groß') {
-            body.style.fontSize = '16px';
-        } else {
-            body.style.fontSize = '14px';
+            // Etymologie: nur noch Skelett
+            const etymEl = document.getElementById('etymologie-text');
+            if (etymEl) etymEl.innerHTML = 'Der Name <strong>Nincshof</strong> bedeutet &ndash; nichts. <span style="color:#aaa;font-style:italic;">[Eintrag nicht verfügbar]</span>';
+
+            // Geografie: stark gekürzt
+            const geoEl = document.getElementById('geografie-text');
+            if (geoEl) geoEl.innerHTML = 'Nincshof liegt irgendwo. Koordinaten: <span style="color:#aaa">[ENTFERNT]</span>';
+
+            // Nachbargemeinden: weg
+            const nachEl = document.getElementById('nachbar-text');
+            if (nachEl) nachEl.innerHTML = '<span style="color:#aaa;font-style:italic;">[Dieser Abschnitt wurde gelöscht]</span>';
+
+            // Geschichte: verkürzt
+            const geschEl = document.getElementById('geschichte-text');
+            if (geschEl) geschEl.innerHTML = 'Die Geschichte von Nincshof ist &hellip; <span style="color:#aaa;font-style:italic;">[weitere Informationen nicht verfügbar]</span>';
+
+            // Religion: Jesusschwein-Eintrag verschwindet
+            const relEl = document.getElementById('religion-text');
+            if (relEl) relEl.innerHTML = 'Mehrheitlich katholisch.';
+
+            // Bevölkerung: weg
+            const bevEl = document.getElementById('bevoelkerung-text');
+            if (bevEl) bevEl.innerHTML = '<span style="color:#aaa;font-style:italic;">[Daten konnten nicht wiederhergestellt werden]</span>';
+
+            // Kultur: Legende weg
+            const kulEl = document.getElementById('kultur-text');
+            if (kulEl) kulEl.innerHTML = 'Nincshof bietet kulturelle Angebote. <span style="color:#aaa;font-style:italic;">[Details entfernt]</span>';
+
+            // Musik: weg
+            const musEl = document.getElementById('musik-text');
+            if (musEl) musEl.innerHTML = '<span style="color:#aaa;font-style:italic;">[Kein Eintrag]</span>';
+
+            // Veranstaltungen: weg
+            const verEl = document.getElementById('veranstaltungen-text');
+            if (verEl) verEl.innerHTML = '<span style="color:#aaa;font-style:italic;">[Kein Eintrag]</span>';
+
+            // Politik: umformuliert
+            const polEl = document.getElementById('politik-text');
+            if (polEl) polEl.innerHTML = '<span style="color:#aaa;font-style:italic;">[Politische Daten nicht verfügbar]</span>';
+
+            // Gemeinderat: weg
+            const grEl = document.getElementById('gemeinderat-text');
+            if (grEl) grEl.innerHTML = '<span style="color:#aaa;font-style:italic;">[Kein Eintrag]</span>';
+
+            // Bürgermeister: weg
+            const bmEl = document.getElementById('buergermeister-text');
+            if (bmEl) bmEl.innerHTML = '<span style="color:#aaa;font-style:italic;">[Kein Eintrag]</span>';
+
+            // Partei: Oblivisten bleiben, aber mit Warnung
+            const parteiEl = document.getElementById('partei-text');
+            if (parteiEl) parteiEl.innerHTML = 'Nincshof folgt nicht der traditionellen Parteienwelt Österreichs. <span style="color:#aaa;font-style:italic;">[Weitere Informationen wurden obliviert]</span>';
+
+            // Infobox: gezielte Felder leeren
+            const wipe = ['ib-koordinaten', 'ib-einwohner', 'ib-dichte', 'ib-plz', 'ib-vorwahl', 'ib-kennziffer', 'ib-adresse', 'ib-kfz'];
+            wipe.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.innerHTML = '<span style="color:#bbb">[—]</span>';
+            });
+
+            // Intro: minimal
+            const introEl = document.getElementById('intro-full');
+            if (introEl) introEl.innerHTML = '<strong>Nincshof</strong> ist eine Gemeinde. <span style="color:#aaa;font-style:italic;">[Weitere Informationen wurden entfernt]</span>';
+
+            // Seitennotiz oben einfügen
+            const h1 = document.querySelector('h1');
+            if (h1 && !document.getElementById('glitch-notice')) {
+                const notice = document.createElement('div');
+                notice.id = 'glitch-notice';
+                notice.style.cssText = 'background:#fff3cd;border:1px solid #ffc107;padding:10px 14px;margin-bottom:16px;font-size:13px;border-radius:2px;color:#856404;';
+                notice.innerHTML = '⚠ <strong>Hinweis:</strong> Teile dieses Artikels konnten nach einem Datenfehler nicht wiederhergestellt werden.';
+                h1.after(notice);
+            }
+
+            // Artikel-Aktionen: kleiner Hinweis in der Tab-Leiste
+            const articleActions = document.querySelector('.article-actions');
+            if (articleActions && !document.getElementById('glitch-tab-hint')) {
+                const hint = document.createElement('span');
+                hint.id = 'glitch-tab-hint';
+                hint.style.cssText = 'font-size:11px;color:#aaa;margin-left:8px;font-style:italic;align-self:center;';
+                hint.textContent = 'Artikel beschädigt';
+                articleActions.appendChild(hint);
+            }
         }
-    }
-
-    // Close appearance dropdown when clicking outside
-    document.addEventListener('click', function (event) {
-        const appearanceMenu = document.querySelector('.appearance-menu');
-        const dropdown = document.getElementById('appearanceDropdown');
-
-        if (!appearanceMenu.contains(event.target)) {
-            dropdown.classList.remove('active');
-        }
-    });
-</script>
+    </script>
 </body>
 
 </html>
